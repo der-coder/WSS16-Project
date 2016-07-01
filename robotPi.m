@@ -230,7 +230,7 @@ nextdir=RandomChoice[placeholder2]
 (*Initialization*)
 
 
-controlBin=Databin[""];
+controlBin=Databin["dSFSYX3k"];
 pins={4,17,27,22};
 sensors=updateSensors[pins];
 position={0,0};

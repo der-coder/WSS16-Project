@@ -216,6 +216,16 @@ newMap
 updateDirection[dir_List,sensorsNow_List]:=Module[{possibleDirections=Table[If[sensorsNow[[i]]==1,Nothing,dir[[i]]],{i,Length[sensorsNow]}]},possibleDirections]
 
 
+updateDirection2[dirs_List,buttons_List,current_String]:=Module[{i,obstacles,placeholder,placeholder2,nextdir},
+obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
+placeholder2=DeleteCases[dirs*obstacles,0];
+If[
+MemberQ[dirs*obstacles,current],
+nextdir=current,
+nextdir=RandomChoice[placeholder2]
+]]
+
+
 (* ::Subchapter:: *)
 (*Initialization*)
 
@@ -241,7 +251,7 @@ previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[position,timestampNew,previousStatus];
-nextDirection=RandomChoice[updateDirection[directions,sensors]];
+nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[nextDirection];
 Pause[2];
@@ -255,7 +265,7 @@ previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[position,timestampNew,previousStatus];
-nextDirection=RandomChoice[updateDirection[directions,sensors]];
+nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[nextDirection]
 Pause[1];,{i,20}]

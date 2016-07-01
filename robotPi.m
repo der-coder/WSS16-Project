@@ -230,6 +230,7 @@ nextdir=RandomChoice[placeholder2]
 (*Initialization*)
 
 
+controlBin=Databin[""];
 pins={4,17,27,22};
 sensors=updateSensors[pins];
 position={0,0};
@@ -254,7 +255,7 @@ DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
 Print[sensors,nextDirection];
 Pause[2];
 
-Do[
+While[Last[Values[controlBin]]==False,
 sensors=updateSensors[pins];
 timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
@@ -264,4 +265,4 @@ mapNew=updateMap[position,timestampNew,previousStatus];
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection]
-Pause[1];,{i,20}]
+Pause[1];]

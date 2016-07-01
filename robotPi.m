@@ -82,17 +82,23 @@ Selectable->False]\)
 
 
 updateWalls2[location_,statusOld_List,sensorsNow_List]:=
-Module[{x=location[[1]],y=location[[2]],newWalls,blockPerimeter},
+Module[
+{x=location[[1]],y=location[[2]],newWalls,blockPerimeter},
+
 blockPerimeter=sensorsNow*{{x,y+1},{x+1,y},{x,y-1},{x-1,y}};
+
 blockPerimeter=DeleteCases[blockPerimeter,{0,0}];
+
 newWalls=Join[statusOld[[5]],blockPerimeter];
+
 If[Length[newWalls]>1,newWalls=DeleteCases[newWalls,{}],Nothing];
 
 newWalls
 ]
 
 
-updateMap[location_List,currentTime_,statusOld_List]:=Module[{newMap=statusOld[[6]],mapSurface,\[CapitalDelta]t=getTimeDifference[currentTime,statusOld[[1]]]},
+updateMap[location_List,currentTime_,statusOld_List]:=Module[
+{newMap=statusOld[[6]],mapSurface,\[CapitalDelta]t=getTimeDifference[currentTime,statusOld[[1]]]},
 mapSurface=\!\(\*
 TagBox[GridBox[{
 {"\[Piecewise]", GridBox[{
@@ -181,6 +187,9 @@ newMap
 ]
 
 
+updateMap[{-6,-2},TimeObject[{16,47,25.124607`},TimeZone->-5.`],{TimeObject[{16,47,22.848591`},TimeZone->-5.`],{-6,0},"Back",{0,1,0,0},{{-11,0},{-5,0}},{{0,0},{-1,0},{-2,0},{-3,0},{-4,0},{-5,0},{-6,0},{-7,0},{-8,0},{-9,0},{-10,0},{-9,0},{-8,0},{-7,0},{-6,0}}}]
+
+
 updateDirection2[dirs_List,buttons_List,current_String]:=Module[{i,obstacles,placeholder,placeholder2,nextdir},
 obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
 placeholder2=DeleteCases[dirs*obstacles,0];
@@ -215,7 +224,7 @@ timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
-mapNew=updateMap[position,timestampNew,previousStatus];
+mapNew=updateMap[positionNew,timestampNew,previousStatus];
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection];
@@ -227,7 +236,7 @@ timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
-mapNew=updateMap[position,timestampNew,previousStatus];
+mapNew=updateMap[positionNew,timestampNew,previousStatus];
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection]

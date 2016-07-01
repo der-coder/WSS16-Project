@@ -232,7 +232,6 @@ nextdir=RandomChoice[placeholder2]
 
 pins={4,17,27,22};
 sensors=updateSensors[pins];
-Print[sensors]
 position={0,0};
 velocity={1,1};
 map={{0,0}};
@@ -241,11 +240,10 @@ directions={"Forward","Right","Back","Left"};
 nextDirection=RandomChoice[directions];
 bin=CreateDatabin["Name"->"Robot_SLAM"];
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
-Print[nextDirection];
+Print[sensors,nextDirection];
 Pause[2];
 
 sensors=updateSensors[pins];
-Print[sensors]
 timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
@@ -253,13 +251,11 @@ wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[position,timestampNew,previousStatus];
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
-Print[nextDirection];
+Print[sensors,nextDirection];
 Pause[2];
 
 Do[
 sensors=updateSensors[pins];
-Print[sensors]
-
 timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
@@ -267,5 +263,5 @@ wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[position,timestampNew,previousStatus];
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
-Print[nextDirection]
+Print[sensors,nextDirection]
 Pause[1];,{i,20}]

@@ -312,7 +312,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
-Print[sensors,nextDirection]
+Print[sensors,nextDirection,position]
 Pause[5];
 ]
 ]

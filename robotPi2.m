@@ -61,7 +61,13 @@ RowBox[{"{",
 RowBox[{"\[CapitalDelta]t", ",", "0"}], "}"}], "*", "speed"}]}], "]"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]}
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
+{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "2", "]"}], "]"}], 
+RowBox[{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
 },
 AllowedDimensions->{2, Automatic},
 Editable->True,
@@ -165,7 +171,13 @@ RowBox[{"{",
 RowBox[{"i", ",", "\[CapitalDelta]t"}], "}"}]}], "]"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]}
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
+{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "2", "]"}], "]"}], 
+RowBox[{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
 },
 AllowedDimensions->{2, Automatic},
 Editable->True,
@@ -187,11 +199,13 @@ newMap
 ]
 
 
-updateDirection2[dirs_List,buttons_List,current_String]:=Module[{i,obstacles,placeholder,placeholder2,nextdir},
+updateDirection2[dirs_List,buttons_List,current_String]:=
+Module[{i,obstacles,placeholder,placeholder2,nextdir,placeholder3},
 obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
-placeholder2=DeleteCases[dirs*obstacles,0];
+placeholder3=DeleteCases[dirs,"Stop"];
+placeholder2=DeleteCases[placeholder3*obstacles,0];
 If[
-MemberQ[dirs*obstacles,current],
+MemberQ[placeholder3*obstacles,current],
 nextdir=current,
 nextdir=RandomChoice[placeholder2]
 ]]
@@ -255,7 +269,7 @@ position={0,0};
 velocity={1,1};
 map={{0,0}};
 walls={{}};
-directions={"Forward","Right","Back","Left"};
+directions={"Forward","Right","Back","Left","Stop"};
 nextDirection=RandomChoice[directions];
 bin=Databin[Last[Values[controlBin]][[1]]];
 If[Last[Values[controlBin]][[2]]=="Scan",DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]

@@ -287,7 +287,7 @@ bin=Databin[Last[Values[controlBin]][[1]]];
 
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
-Print[sensors,nextDirection];
+Print[sensors,nextDirection,position];
 
 Pause[5];
 

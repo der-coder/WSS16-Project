@@ -275,12 +275,18 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 
-If[Last[Values[controlBin]][[2]]=="Control",
+If[
+Last[Values[controlBin]][[2]]=="Control",
 nextDirection="Stop",
-nextDirection=RandomChoice[directions]];
+nextDirection=RandomChoice[directions]
+];
 
 bin=Databin[Last[Values[controlBin]][[1]]];
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
+
+DatabinAdd[
+bin,
+{TimeObject[Now],position,nextDirection,sensors,walls,map}
+];
 
 Print[sensors,"            ",nextDirection];
 
@@ -299,15 +305,20 @@ positionNew=updatePosition[timestampNew,previousStatus,velocity];
 
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 
-If[Last[Values[controlBin]][[2]]=="Control",
-mapNew=updateMap[positionNew,timestampNew,previousStatus]];
+If[
+Last[Values[controlBin]][[2]]=="Control",
+mapNew=updateMap[positionNew,timestampNew,previousStatus]
+];
 
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
-If[Last[Values[controlBin]][[2]]=="Control",
-nextDirection="Stop"];
+If[
+Last[Values[controlBin]][[2]]=="Control",
+nextDirection="Stop"
+];
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
+
 Print[sensors,nextDirection]
 Pause[5];
 ]

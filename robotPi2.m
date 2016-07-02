@@ -173,8 +173,9 @@ RowBox[{
 RowBox[{"statusOld", "[", 
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
 {
+RowBox[{"{", 
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "2", "]"}], "]"}], 
+RowBox[{"[", "2", "]"}], "]"}], "}"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    336113,       6287]
-NotebookOptionsPosition[    334742,       6235]
-NotebookOutlinePosition[    335074,       6250]
-CellTagsIndexPosition[    335031,       6247]
+NotebookDataLength[    336803,       6300]
+NotebookOptionsPosition[    335432,       6248]
+NotebookOutlinePosition[    335764,       6263]
+CellTagsIndexPosition[    335721,       6260]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3758,7 +3758,8 @@ Cell[BoxData[
         RowBox[{"Button", "[", 
          RowBox[{"\"\<Clear bin\>\"", ",", 
           RowBox[{"DatabinRemove", "[", 
-           RowBox[{"robotBin", ",", 
+           RowBox[{
+            RowBox[{"Databin", "[", "rBin", "]"}], ",", 
             RowBox[{"1", ";;", 
              RowBox[{"Length", "[", 
               RowBox[{"Values", "[", "robotBin", "]"}], "]"}]}]}], "]"}], ",", 
@@ -3804,7 +3805,8 @@ Cell[BoxData[
         RowBox[{"Button", "[", 
          RowBox[{"\"\<Update states\>\"", ",", 
           RowBox[{"states", "=", 
-           RowBox[{"Values", "[", "robotBin", "]"}]}], ",", 
+           RowBox[{"Values", "[", 
+            RowBox[{"Databin", "[", "rBin", "]"}], "]"}]}], ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -4830,6 +4832,13 @@ yd8l8vXfjZ+hfhZ+Jp+rYbFYLBaLxWKxWCwWi8Xyvv4PqB3lAg==
           DefaultBaseStyle->"ImageGraphics",
           ImageSizeRaw->{256, 256},
           PlotRange->{{0, 256}, {0, 256}}], ",", 
+         RowBox[{"DatabinAdd", "[", 
+          RowBox[{
+           RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "rBin", ",", "\"\<Control\>\"", ",", "\"\<Right\>\"", ",", 
+             "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
          RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], "]"}]}], 
       "}"}], "]"}], ",", "\[IndentingNewLine]", 
     RowBox[{"Row", "[", 
@@ -5084,14 +5093,14 @@ kUgkCr/+D1+r5QI=
    3.676474597667796*^9, 3.676474597957638*^9}, {3.67647531873975*^9, 
    3.676475338055938*^9}, {3.676475894059573*^9, 3.676475908956374*^9}, {
    3.6764759582029963`*^9, 3.6764759600503483`*^9}, {3.676476372845745*^9, 
-   3.676476455534357*^9}}],
+   3.676476455534357*^9}, {3.6764770623856773`*^9, 3.676477067745788*^9}, {
+   3.676477749774954*^9, 3.676477786406693*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
     {
-     TemplateBox[{
-      ButtonBox[
-       "\"Clear bin\"", ButtonFunction :> DatabinRemove[$CellContext`robotBin, 
+     TemplateBox[{ButtonBox["\"Clear bin\"", ButtonFunction :> DatabinRemove[
+          Databin[$CellContext`rBin], 
           Span[1, 
            Length[
             Values[$CellContext`robotBin]]]], Appearance -> "Palette", 
@@ -5112,9 +5121,8 @@ Cell[BoxData[
           "dSFSYX3k"], {$CellContext`rBin, "Control", "Stop", "Abort"}], 
         Appearance -> "Palette", FrameMargins -> Medium, Evaluator -> 
         Automatic, Method -> "Preemptive"],ButtonBox[
-       "\"Update states\"", 
-        ButtonFunction :> ($CellContext`states = 
-         Values[$CellContext`robotBin]), Appearance -> "Palette", 
+       "\"Update states\"", ButtonFunction :> ($CellContext`states = Values[
+           Databin[$CellContext`rBin]]), Appearance -> "Palette", 
         FrameMargins -> Medium, Evaluator -> Automatic, Method -> 
         "Preemptive"],ButtonBox[
        "\"Toggle map\"", 
@@ -5389,7 +5397,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{300., {108., 113.}}]},
+      ImageSizeCache->{347., {190., 197.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -6005,8 +6013,11 @@ yd8l8vXfjZ+hfhZ+Jp+rYbFYLBaLxWKxWCwWi8Xyvv4PqB3lAg==
           BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
            Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
          ImageSizeRaw -> {256, 256}, PlotRange -> {{0, 256}, {0, 256}}], 
-        ButtonFunction :> {}, Evaluator -> None, Appearance -> "Palette", 
-        Method -> "Preemptive"]},
+        ButtonFunction :> DatabinAdd[
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Right", "Execute"}], 
+        Appearance -> "Palette", Evaluator -> Automatic, Method -> 
+        "Preemptive"]},
       "RowDefault"]},
     {
      TemplateBox[{InterpretationBox[
@@ -6228,7 +6239,9 @@ kUgkCr/+D1+r5QI=
   3.6764741821724577`*^9, 3.6764744916931877`*^9, {3.676474522086832*^9, 
    3.676474532993815*^9}, {3.67647457508607*^9, 3.6764745985259542`*^9}, 
    3.676474888116391*^9, 3.6764753388153954`*^9, 3.676475912208536*^9, 
-   3.676475961067531*^9, 3.6764764593304253`*^9, 3.67647697610817*^9}]
+   3.676475961067531*^9, 3.6764764593304253`*^9, 3.67647697610817*^9, 
+   3.676477068158737*^9, 3.676477627086516*^9, {3.676477758933799*^9, 
+   3.676477786982704*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -6284,8 +6297,8 @@ Cell[192085, 3737, 76, 1, 30, "Output"]
 }, Open  ]],
 Cell[192176, 3741, 192, 4, 32, "Input"],
 Cell[CellGroupData[{
-Cell[192393, 3749, 75856, 1337, 2097, "Input"],
-Cell[268252, 5088, 66450, 1142, 508, "Output"]
+Cell[192393, 3749, 76332, 1347, 2167, "Input"],
+Cell[268728, 5098, 66664, 1145, 674, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

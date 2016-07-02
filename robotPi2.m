@@ -64,7 +64,10 @@ RowBox[{"{",
 RowBox[{"\[CapitalDelta]t", ",", "0"}], "}"}], "*", "speed"}]}], "]"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]}
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
+{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "2", "]"}], "]"}], "True"}
 },
 AllowedDimensions->{2, Automatic},
 Editable->True,

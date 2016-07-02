@@ -269,8 +269,9 @@ position={0,0};
 velocity={1,1};
 map={{0,0}};
 walls={{}};
-directions={"Forward","Right","Back","Left","Stop"};
+directions={"Forward","Right","Back","Left"};
 nextDirection=RandomChoice[directions];
+
 bin=Databin[Last[Values[controlBin]][[1]]];
 If[Last[Values[controlBin]][[2]]=="Scan",DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]
 
@@ -278,7 +279,9 @@ Print[sensors,nextDirection];
 
 Pause[5];
 
-While[Last[Values[controlBin]][[4]]=="Execute",(* This needs to be updated because the databin entries will be lists of several elements *)
+While[
+Last[Values[controlBin]][[4]]=="Execute",
+
 sensors=updateSensors[pins];
 timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
@@ -293,4 +296,5 @@ nextDirection=Last[Values[controlBin]][[3]]];
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection]
-Pause[5];]
+Pause[5];
+]

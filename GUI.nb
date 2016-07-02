@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    322072,       5938]
-NotebookOptionsPosition[    320861,       5891]
-NotebookOutlinePosition[    321193,       5906]
-CellTagsIndexPosition[    321150,       5903]
+NotebookDataLength[    322376,       5951]
+NotebookOptionsPosition[    321125,       5903]
+NotebookOutlinePosition[    321457,       5918]
+CellTagsIndexPosition[    321414,       5915]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1019,6 +1019,11 @@ lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
   Selectable->False]], "Output",
  CellChangeTimes->{3.676474275970492*^9}]
 }, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rBin", "=", "\"\<dU2MlCgB\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.676476408138824*^9, 3.676476413876218*^9}}],
 
 Cell[CellGroupData[{
 
@@ -3435,8 +3440,8 @@ Cell[BoxData[
             RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
             RowBox[{"{", 
              RowBox[{
-             "\"\<dU2MlCgB\>\"", ",", "\"\<Scan\>\"", ",", "\"\<Stop\>\"", 
-              ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
+             "rBin", ",", "\"\<Scan\>\"", ",", "\"\<Stop\>\"", ",", 
+              "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -3447,8 +3452,8 @@ Cell[BoxData[
             RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
             RowBox[{"{", 
              RowBox[{
-             "\"\<dU2dloxf\>\"", ",", "\"\<Control\>\"", ",", "\"\<Stop\>\"", 
-              ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
+             "rBin", ",", "\"\<Control\>\"", ",", "\"\<Stop\>\"", ",", 
+              "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -3459,8 +3464,8 @@ Cell[BoxData[
             RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
             RowBox[{"{", 
              RowBox[{
-             "\"\<dU2dloxf\>\"", ",", "\"\<Control\>\"", ",", "\"\<Stop\>\"", 
-              ",", "\"\<Abort\>\""}], "}"}]}], "]"}], ",", 
+             "rBin", ",", "\"\<Control\>\"", ",", "\"\<Stop\>\"", ",", 
+              "\"\<Abort\>\""}], "}"}]}], "]"}], ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -4075,8 +4080,8 @@ Cfbvxs8wPws/U87ViEQikUgkEolEIpFIJBKFX/8HsirlAg==
            RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
            RowBox[{"{", 
             RowBox[{
-            "\"\<dU2MlCgB\>\"", ",", "\"\<Control\>\"", ",", 
-             "\"\<Forward\>\"", ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
+            "rBin", ",", "\"\<Control\>\"", ",", "\"\<Forward\>\"", ",", 
+             "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
          RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], "]"}]}], 
       "}"}], "]"}], ",", "\[IndentingNewLine]", 
     RowBox[{"Row", "[", 
@@ -4289,8 +4294,8 @@ yjTbWRGzr7rXjkGNGuXLWcqXSxSrkNdO16oU4qDeLyfMk4ozip9inCn5Nfw3
            RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
            RowBox[{"{", 
             RowBox[{
-            "\"\<dU2MlCgB\>\"", ",", "\"\<Control\>\"", ",", "\"\<Left\>\"", 
-             ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
+            "rBin", ",", "\"\<Control\>\"", ",", "\"\<Left\>\"", ",", 
+             "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
          RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], "]"}], ",", 
        RowBox[{"Spacer", "[", "125", "]"}], ",", 
        RowBox[{"Button", "[", 
@@ -4706,8 +4711,8 @@ kUgkCr/+D1+r5QI=
            RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
            RowBox[{"{", 
             RowBox[{
-            "\"\<dU2MlCgB\>\"", ",", "\"\<Control\>\"", ",", "\"\<Back\>\"", 
-             ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
+            "rBin", ",", "\"\<Control\>\"", ",", "\"\<Back\>\"", ",", 
+             "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
          RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], "]"}]}], 
       "}"}], "]"}]}], "}"}], "]"}]], "Input",
  CellChangeTimes->{{3.676413505533984*^9, 3.676413535809683*^9}, {
@@ -4746,7 +4751,8 @@ kUgkCr/+D1+r5QI=
    3.676474514212302*^9, {3.676474558340107*^9, 3.676474562357017*^9}, {
    3.676474597667796*^9, 3.676474597957638*^9}, {3.67647531873975*^9, 
    3.676475338055938*^9}, {3.676475894059573*^9, 3.676475908956374*^9}, {
-   3.6764759582029963`*^9, 3.6764759600503483`*^9}}],
+   3.6764759582029963`*^9, 3.6764759600503483`*^9}, {3.676476372845745*^9, 
+   3.676476455534357*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -4760,15 +4766,18 @@ Cell[BoxData[
         FrameMargins -> Medium, Evaluator -> Automatic, Method -> 
         "Preemptive"],ButtonBox[
        "\"Start scanning\"", ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2MlCgB", "Scan", "Stop", "Execute"}], 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Scan", "Stop", "Execute"}], 
         Appearance -> "Palette", FrameMargins -> Medium, Evaluator -> 
         Automatic, Method -> "Preemptive"],ButtonBox[
        "\"Control mode\"", ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2dloxf", "Control", "Stop", "Execute"}], 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Stop", "Execute"}], 
         Appearance -> "Palette", FrameMargins -> Medium, Evaluator -> 
         Automatic, Method -> "Preemptive"],ButtonBox[
        "\"Finish\"", ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2dloxf", "Control", "Stop", "Abort"}], 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Stop", "Abort"}], 
         Appearance -> "Palette", FrameMargins -> Medium, Evaluator -> 
         Automatic, Method -> "Preemptive"],ButtonBox[
        "\"Update states\"", 
@@ -5253,8 +5262,9 @@ Cfbvxs8wPws/U87ViEQikUgkEolEIpFIJBKFX/8HsirlAg==
            Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
          ImageSizeRaw -> {256, 256}, PlotRange -> {{0, 256}, {0, 256}}], 
         ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2MlCgB", "Control", "Forward", "Execute"}],
-         Appearance -> "Palette", Evaluator -> Automatic, Method -> 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Forward", "Execute"}], 
+        Appearance -> "Palette", Evaluator -> Automatic, Method -> 
         "Preemptive"]},
       "RowDefault"]},
     {
@@ -5459,7 +5469,8 @@ yjTbWRGzr7rXjkGNGuXLWcqXSxSrkNdO16oU4qDeLyfMk4ozip9inCn5Nfw3
            Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
          ImageSizeRaw -> {256, 256}, PlotRange -> {{0, 256}, {0, 256}}], 
         ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2MlCgB", "Control", "Left", "Execute"}], 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Left", "Execute"}], 
         Appearance -> "Palette", Evaluator -> Automatic, Method -> 
         "Preemptive"],InterpretationBox[
         StyleBox[
@@ -5871,7 +5882,8 @@ kUgkCr/+D1+r5QI=
            Selectable -> False], DefaultBaseStyle -> "ImageGraphics", 
          ImageSizeRaw -> {256, 256}, PlotRange -> {{0, 256}, {0, 256}}], 
         ButtonFunction :> DatabinAdd[
-          Databin["dSFSYX3k"], {"dU2MlCgB", "Control", "Back", "Execute"}], 
+          Databin[
+          "dSFSYX3k"], {$CellContext`rBin, "Control", "Back", "Execute"}], 
         Appearance -> "Palette", Evaluator -> Automatic, Method -> 
         "Preemptive"]},
       "RowDefault"]}
@@ -5884,7 +5896,7 @@ kUgkCr/+D1+r5QI=
   3.6764741821724577`*^9, 3.6764744916931877`*^9, {3.676474522086832*^9, 
    3.676474532993815*^9}, {3.67647457508607*^9, 3.6764745985259542`*^9}, 
    3.676474888116391*^9, 3.6764753388153954`*^9, 3.676475912208536*^9, 
-   3.676475961067531*^9}]
+   3.676475961067531*^9, 3.6764764593304253`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -5920,23 +5932,24 @@ Cell[CellGroupData[{
 Cell[28152, 695, 268, 7, 52, "Input"],
 Cell[28423, 704, 13103, 315, 65, "Output"]
 }, Open  ]],
+Cell[41541, 1022, 151, 3, 32, "Input"],
 Cell[CellGroupData[{
-Cell[41563, 1024, 130, 1, 97, "Subchapter"],
+Cell[41717, 1029, 130, 1, 97, "Subchapter"],
 Cell[CellGroupData[{
-Cell[41718, 1029, 71645, 1250, 1489, "Input"],
-Cell[113366, 2281, 64657, 1104, 925, "Output"]
+Cell[41872, 1034, 71645, 1250, 1489, "Input"],
+Cell[113520, 2286, 64657, 1104, 925, "Output"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[178072, 3391, 110, 1, 47, "Subchapter"],
+Cell[178226, 3396, 110, 1, 47, "Subchapter"],
 Cell[CellGroupData[{
-Cell[178207, 3396, 125, 2, 32, "Input"],
-Cell[178335, 3400, 76, 1, 30, "Output"]
+Cell[178361, 3401, 125, 2, 32, "Input"],
+Cell[178489, 3405, 76, 1, 30, "Output"]
 }, Open  ]],
-Cell[178426, 3404, 192, 4, 32, "Input"],
+Cell[178580, 3409, 192, 4, 32, "Input"],
 Cell[CellGroupData[{
-Cell[178643, 3412, 75878, 1336, 2117, "Input"],
-Cell[254524, 4750, 66297, 1136, 508, "Output"]
+Cell[178797, 3417, 75856, 1337, 2097, "Input"],
+Cell[254656, 4756, 66429, 1142, 508, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

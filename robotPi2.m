@@ -8,12 +8,15 @@
 (*Functions*)
 
 
+(* ::Code:: *)
 updateSensors[pins_List]:=Module[{temporary,sensorVector},temporary=DeviceRead["GPIO",pins];sensorVector=Table[temporary[pins[[i]]],{i,Length[pins]}]]
 
 
+(* ::Code:: *)
 getTimeDifference[tNow_,tBefore_]:=Module[{},Round[QuantityMagnitude[UnitConvert[tNow-tBefore,"Seconds"]]]]
 
 
+(* ::Code:: *)
 updatePosition[currentTime_,statusOld_List,speed_List]:=Module[{newPosition,\[CapitalDelta]t=getTimeDifference[currentTime,statusOld[[1]]]},
 newPosition=\!\(\*
 TagBox[GridBox[{
@@ -81,6 +84,7 @@ Selectable->False]\)
 ]
 
 
+(* ::Code:: *)
 updateWalls2[location_,statusOld_List,sensorsNow_List]:=
 Module[
 {x=location[[1]],y=location[[2]],newWalls,blockPerimeter},
@@ -97,6 +101,7 @@ newWalls
 ]
 
 
+(* ::Code:: *)
 updateMap[location_List,currentTime_,statusOld_List]:=Module[
 {newMap=statusOld[[6]],mapSurface,\[CapitalDelta]t=getTimeDifference[currentTime,statusOld[[1]]]},
 mapSurface=\!\(\*
@@ -195,6 +200,7 @@ newMap
 ]
 
 
+(* ::Code:: *)
 updateDirection2[dirs_List,buttons_List,current_String]:=
 Module[{i,obstacles,placeholder,placeholder2,nextdir,placeholder3},
 obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
@@ -207,6 +213,7 @@ nextdir=RandomChoice[placeholder2]
 ]]
 
 
+(* ::Code:: *)
 moveRobot[where_String,motorPins_List]:=Module[{output},
 output=\!\(\*
 TagBox[GridBox[{
@@ -255,6 +262,7 @@ DeviceWrite["GPIO",{motorPins[[1]]->output[1],motorPins[[2]]->output[2],motorPin
 (*Initialization*)
 
 
+(* ::Code:: *)
 controlBin=Databin["dSFSYX3k"];
 Print[Last[Values[controlBin]]]
 pins={4,17,27,22}; (*Input pins*)

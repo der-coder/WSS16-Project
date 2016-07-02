@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    323415,       5973]
-NotebookOptionsPosition[    322163,       5925]
-NotebookOutlinePosition[    322495,       5940]
-CellTagsIndexPosition[    322452,       5937]
+NotebookDataLength[    336995,       6305]
+NotebookOptionsPosition[    335623,       6253]
+NotebookOutlinePosition[    335956,       6268]
+CellTagsIndexPosition[    335913,       6265]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3413,7 +3413,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.676474569581875*^9, 3.676474572271433*^9}}],
 
 Cell[BoxData["False"], "Output",
- CellChangeTimes->{3.6764745726796083`*^9}]
+ CellChangeTimes->{3.6764745726796083`*^9, 3.676478227138459*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -3421,6 +3421,329 @@ Cell[BoxData[
   RowBox[{"states", "=", 
    RowBox[{"Databin", "[", "\"\<dSUkS0DF\>\"", "]"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.6764744817451563`*^9, 3.6764744850638247`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["states"], "Input",
+ CellChangeTimes->{{3.676479204363049*^9, 3.676479205876556*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["Databin",
+    "SummaryHead"], "[", 
+   DynamicModuleBox[{Typeset`open$$ = False}, 
+    PanelBox[
+     PaneSelectorBox[{False->GridBox[{
+        {
+         PaneBox[
+          ButtonBox[
+           
+           DynamicBox[FEPrivate`FrontEndResource[
+            "FEBitmaps", "SquarePlusIconMedium"],
+            ImageSizeCache->{12., {0., 12.}}],
+           Appearance->None,
+           ButtonFunction:>(Typeset`open$$ = True),
+           Evaluator->Automatic,
+           Method->"Preemptive"],
+          Alignment->{Center, Center},
+          
+          ImageSize->
+           Dynamic[{
+            Automatic, 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+             Magnification]}]], 
+         GraphicsBox[
+          {Thickness[0.05555555555555555], FaceForm[{RGBColor[
+           0.44721600000000006`, 0.519288, 0.528528], Opacity[1.]}], 
+           FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 
+             2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {
+             0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+             0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {
+             0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+             0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}}}, {{{15.646999999999998`, 
+             5.933000000000001}, {13.585, 7.263}, {15.533, 8.458}, {17.332, 
+             7.363999999999999}, {15.646999999999998`, 5.933000000000001}}, {{
+             12.697, 3.425}, {10.245, 5.212}, {12.491, 6.591}, {
+             14.725999999999999`, 5.1499999999999995`}, {12.697, 3.425}}, {{
+             8.666, 0.}, {5.978000000000001, 2.285}, {8.666, 4.244}, {
+             11.354000000000001`, 2.285}, {8.666, 0.}}, {{4.635, 3.425}, {
+             2.606, 5.1499999999999995`}, {4.841, 6.591}, {7.087, 5.212}, {
+             4.635, 3.425}}, {{0., 7.363999999999999}, {1.799, 8.458}, {
+             3.7470000000000003`, 7.263}, {1.6840000000000002`, 
+             5.933000000000001}, {0., 7.363999999999999}}, CompressedData["
+1:eJxTTMoPSmViYGAQBmIQrbtp7vvlbqIOP+uy9pQIqzr8Wfnxkm+SjIPIOveH
+VVNUHNgbpzp3v1Fw2Pb575WKk0YOpnG7PHmYFB1eB+6Qa+U2djDvdEx4OkHR
+AWTMMSA/PQ0Ilik61NgDVQLVF9hyXV9coOKwp2SyBMs0FYcFUvp3Vdg04PbJ
+twJNikPwV4Gsn6DhAFQdxrdWxWHWTCCI1HAAOSMnXcXB42GVyLrjig5nz4CA
+hEMWyOAWRQd+kEfUJaDmKzpoxvQf+qoh4RDQOz1P6LCCA5N2u9jNcxIOlltO
+lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
+             "]}]},
+          AspectRatio->1,
+          Axes->False,
+          Background->GrayLevel[0.93],
+          Frame->True,
+          FrameStyle->Directive[
+            Thickness[Tiny], 
+            GrayLevel[0.55]],
+          FrameTicks->None,
+          ImageSize->{Automatic, 
+            Dynamic[
+            3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+              Magnification])]},
+          PlotRange->{{0., 18.}, {0., 19.}},
+          PlotRangePadding->2.5], GridBox[{
+           {
+            RowBox[{
+             TagBox["\<\"Name: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"Robot_SLAM\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Entry count: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[
+                Lookup[
+                 Replace[
+                  
+                  DataDropClient`Private`datadropclientcache[{
+                   "DatabinStats", 
+                    "DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3"}], Except[
+                    Blank[Association]] -> {}, {0}], "EntryCount", 0], 
+                StandardForm],
+               ImageSizeCache->{14., {0., 8.}}],
+              "SummaryItem"]}]}
+          },
+          AutoDelete->False,
+          
+          BaseStyle->{
+           ShowStringCharacters -> False, NumberMarks -> False, 
+            PrintPrecision -> 3, ShowSyntaxStyles -> False},
+          GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+          GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+       },
+       AutoDelete->False,
+       BaselinePosition->{1, 1},
+       GridBoxAlignment->{"Rows" -> {{Top}}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], True->
+      GridBox[{
+        {
+         PaneBox[
+          ButtonBox[
+           
+           DynamicBox[FEPrivate`FrontEndResource[
+            "FEBitmaps", "SquareMinusIconMedium"]],
+           Appearance->None,
+           ButtonFunction:>(Typeset`open$$ = False),
+           Evaluator->Automatic,
+           Method->"Preemptive"],
+          Alignment->{Center, Center},
+          
+          ImageSize->
+           Dynamic[{
+            Automatic, 3.5 CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+             Magnification]}]], 
+         GraphicsBox[
+          {Thickness[0.05555555555555555], FaceForm[{RGBColor[
+           0.44721600000000006`, 0.519288, 0.528528], Opacity[1.]}], 
+           FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 
+             2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {
+             0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+             0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 0}, {
+             0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+             0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}}}, {{{15.646999999999998`, 
+             5.933000000000001}, {13.585, 7.263}, {15.533, 8.458}, {17.332, 
+             7.363999999999999}, {15.646999999999998`, 5.933000000000001}}, {{
+             12.697, 3.425}, {10.245, 5.212}, {12.491, 6.591}, {
+             14.725999999999999`, 5.1499999999999995`}, {12.697, 3.425}}, {{
+             8.666, 0.}, {5.978000000000001, 2.285}, {8.666, 4.244}, {
+             11.354000000000001`, 2.285}, {8.666, 0.}}, {{4.635, 3.425}, {
+             2.606, 5.1499999999999995`}, {4.841, 6.591}, {7.087, 5.212}, {
+             4.635, 3.425}}, {{0., 7.363999999999999}, {1.799, 8.458}, {
+             3.7470000000000003`, 7.263}, {1.6840000000000002`, 
+             5.933000000000001}, {0., 7.363999999999999}}, CompressedData["
+1:eJxTTMoPSmViYGAQBmIQrbtp7vvlbqIOP+uy9pQIqzr8Wfnxkm+SjIPIOveH
+VVNUHNgbpzp3v1Fw2Pb575WKk0YOpnG7PHmYFB1eB+6Qa+U2djDvdEx4OkHR
+AWTMMSA/PQ0Ilik61NgDVQLVF9hyXV9coOKwp2SyBMs0FYcFUvp3Vdg04PbJ
+twJNikPwV4Gsn6DhAFQdxrdWxWHWTCCI1HAAOSMnXcXB42GVyLrjig5nz4CA
+hEMWyOAWRQd+kEfUJaDmKzpoxvQf+qoh4RDQOz1P6LCCA5N2u9jNcxIOlltO
+lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
+             "]}]},
+          AspectRatio->1,
+          Axes->False,
+          Background->GrayLevel[0.93],
+          Frame->True,
+          FrameStyle->Directive[
+            Thickness[Tiny], 
+            GrayLevel[0.55]],
+          FrameTicks->None,
+          ImageSize->{Automatic, 
+            Dynamic[
+            3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+              Magnification])]},
+          PlotRange->{{0., 18.}, {0., 19.}},
+          PlotRangePadding->2.5], GridBox[{
+           {
+            RowBox[{
+             TagBox["\<\"Name: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"Robot_SLAM\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Entry count: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[
+                Lookup[
+                 Replace[
+                  
+                  DataDropClient`Private`datadropclientcache[{
+                   "DatabinStats", 
+                    "DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3"}], Except[
+                    Blank[Association]] -> {}, {0}], "EntryCount", 0], 
+                StandardForm]],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Short ID: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"dSUkS0DF\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"UUID: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"ShortURL: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              TagBox[
+               ButtonBox[
+                
+                PaneSelectorBox[{False->"\<\"https://wolfr.am/dSUkS0DF\"\>", 
+                 True->
+                 
+                 StyleBox["\<\"https://wolfr.am/dSUkS0DF\"\>", 
+                  "HyperlinkActive"]}, Dynamic[
+                  CurrentValue["MouseOver"]],
+                 BaseStyle->{"Hyperlink"},
+                 FrameMargins->0,
+                 ImageSize->Automatic],
+                BaseStyle->"Hyperlink",
+                ButtonData->{
+                  URL["https://wolfr.am/dSUkS0DF"], None},
+                ButtonNote->"https://wolfr.am/dSUkS0DF"],
+               Annotation[#, "https://wolfr.am/dSUkS0DF", "Hyperlink"]& ],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Creator: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"a01184862@itesm.mx\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Owner: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"a01184862@itesm.mx\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Creation date: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"Fri 1 Jul 2016 20:11:39\"\>",
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Latest date: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[
+                Replace[
+                 Lookup[
+                  Replace[
+                   
+                   DataDropClient`Private`datadropclientcache[{
+                    "DatabinLatest", 
+                    "DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3"}], Except[
+                    Blank[Association]] -> {}, {0}], "Timestamp", 
+                  Missing[]], Pattern[DataDropClient`Private`date, 
+                   Blank[DateObject]] :> 
+                 DateString[DataDropClient`Private`date], {0}], StandardForm]],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Size: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[
+                Round[
+                 Lookup[
+                  Replace[
+                   
+                   DataDropClient`Private`datadropclientcache[{
+                    "DatabinStats", 
+                    "DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3"}], Except[
+                    Blank[Association]] -> {}, {0}], "Size", 0]], 
+                StandardForm], 0.1],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"Latest: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox[
+              DynamicBox[ToBoxes[
+                Lookup[
+                 Replace[
+                  
+                  DataDropClient`Private`datadropclientcache[{
+                   "DatabinLatest", 
+                    "DD9f2c42e521c-b6d7-4624-b9d1-ea2cfa2296f3"}], Except[
+                    Blank[Association]] -> {}, {0}], "Data", 
+                 Missing[]], StandardForm]],
+              "SummaryItem"]}]},
+           {
+            RowBox[{
+             TagBox["\<\"ExpirationDate: \"\>",
+              "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+             TagBox["\<\"Sun 31 Jul 2016\"\>",
+              "SummaryItem"]}]}
+          },
+          AutoDelete->False,
+          
+          BaseStyle->{
+           ShowStringCharacters -> False, NumberMarks -> False, 
+            PrintPrecision -> 3, ShowSyntaxStyles -> False},
+          GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+          GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {{Automatic}}}]}
+       },
+       AutoDelete->False,
+       BaselinePosition->{1, 1},
+       GridBoxAlignment->{"Rows" -> {{Top}}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]}, Dynamic[
+      Typeset`open$$],
+      ImageSize->Automatic],
+     BaselinePosition->Baseline],
+    DynamicModuleValues:>{}], "]"}],
+  Databin["dSUkS0DF"],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.676479206345903*^9}]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3439,7 +3762,9 @@ Cell[BoxData[
             RowBox[{"Databin", "[", "rBin", "]"}], ",", 
             RowBox[{"1", ";;", 
              RowBox[{"Length", "[", 
-              RowBox[{"Values", "[", "robotBin", "]"}], "]"}]}]}], "]"}], ",", 
+              RowBox[{"Values", "[", 
+               RowBox[{"Databin", "[", "rBin", "]"}], "]"}], "]"}]}]}], "]"}],
+           ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -4771,7 +5096,8 @@ kUgkCr/+D1+r5QI=
    3.676475338055938*^9}, {3.676475894059573*^9, 3.676475908956374*^9}, {
    3.6764759582029963`*^9, 3.6764759600503483`*^9}, {3.676476372845745*^9, 
    3.676476455534357*^9}, {3.6764770623856773`*^9, 3.676477067745788*^9}, {
-   3.676477749774954*^9, 3.676477786406693*^9}}],
+   3.676477749774954*^9, 3.676477786406693*^9}, {3.6764782405406723`*^9, 
+   3.6764782449702597`*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -4780,7 +5106,8 @@ Cell[BoxData[
           Databin[$CellContext`rBin], 
           Span[1, 
            Length[
-            Values[$CellContext`robotBin]]]], Appearance -> "Palette", 
+            Values[
+             Databin[$CellContext`rBin]]]]], Appearance -> "Palette", 
         FrameMargins -> Medium, Evaluator -> Automatic, Method -> 
         "Preemptive"],ButtonBox[
        "\"Start scanning\"", ButtonFunction :> DatabinAdd[
@@ -5074,7 +5401,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{300., {108., 113.}}]},
+      ImageSizeCache->{347., {190., 197.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -5918,13 +6245,14 @@ kUgkCr/+D1+r5QI=
    3.676474888116391*^9, 3.6764753388153954`*^9, 3.676475912208536*^9, 
    3.676475961067531*^9, 3.6764764593304253`*^9, 3.67647697610817*^9, 
    3.676477068158737*^9, 3.676477627086516*^9, {3.676477758933799*^9, 
-   3.676477786982704*^9}, 3.676477960057768*^9}]
+   3.676477786982704*^9}, 3.676477960057768*^9, 3.676478246603709*^9, 
+   3.676479190251376*^9, 3.67647922228545*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{679, 709},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowSize->{1366, 709},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 FrontEndVersion->"11.0 for Linux x86 (64-bit) (June 15, 2016)",
 StyleDefinitions->"Default.nb"
 ]
@@ -5951,12 +6279,12 @@ Cell[14297, 359, 13347, 321, 221, "Output"]
 }, Open  ]],
 Cell[27659, 683, 489, 10, 121, "Text"],
 Cell[CellGroupData[{
-Cell[28173, 697, 268, 7, 52, "Input"],
+Cell[28173, 697, 268, 7, 32, "Input"],
 Cell[28444, 706, 13361, 321, 65, "Output"]
 }, Open  ]],
 Cell[41820, 1030, 177, 4, 30, "Input"],
 Cell[CellGroupData[{
-Cell[42022, 1038, 130, 1, 97, "Subchapter"],
+Cell[42022, 1038, 130, 1, 63, "Subchapter"],
 Cell[CellGroupData[{
 Cell[42177, 1043, 71645, 1250, 1489, "Input"],
 Cell[113825, 2295, 64657, 1104, 925, "Output"]
@@ -5966,12 +6294,16 @@ Cell[CellGroupData[{
 Cell[178531, 3405, 110, 1, 47, "Subchapter"],
 Cell[CellGroupData[{
 Cell[178666, 3410, 125, 2, 32, "Input"],
-Cell[178794, 3414, 76, 1, 30, "Output"]
+Cell[178794, 3414, 98, 1, 30, "Output"]
 }, Open  ]],
-Cell[178885, 3418, 192, 4, 32, "Input"],
+Cell[178907, 3418, 192, 4, 32, "Input"],
 Cell[CellGroupData[{
-Cell[179102, 3426, 76332, 1347, 2167, "Input"],
-Cell[255437, 4775, 66686, 1145, 508, "Output"]
+Cell[179124, 3426, 98, 1, 30, "Input"],
+Cell[179225, 3429, 13104, 315, 65, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[192366, 3749, 76440, 1350, 1452, "Input"],
+Cell[268809, 5101, 66774, 1147, 674, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

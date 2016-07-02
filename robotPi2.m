@@ -67,7 +67,10 @@ RowBox[{"statusOld", "[",
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
 {
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "2", "]"}], "]"}], "True"}
+RowBox[{"[", "2", "]"}], "]"}], 
+RowBox[{
+RowBox[{"statusOld", "[", 
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
 },
 AllowedDimensions->{2, Automatic},
 Editable->True,

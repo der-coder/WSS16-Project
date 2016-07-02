@@ -179,9 +179,8 @@ RowBox[{"statusOld", "[",
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
 {
 RowBox[{"{", 
-RowBox[{"{", 
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "2", "]"}], "]"}], "}"}], "}"}], 
+RowBox[{"[", "2", "]"}], "]"}], "}"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
@@ -201,7 +200,7 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-newMap=Join[newMap,mapSurface];
+If[statusOld[[3]]!="Stop",newMap=Join[newMap,mapSurface]];
 newMap
 ]
 

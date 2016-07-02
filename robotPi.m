@@ -187,9 +187,6 @@ newMap
 ]
 
 
-updateMap[{-6,-2},TimeObject[{16,47,25.124607`},TimeZone->-5.`],{TimeObject[{16,47,22.848591`},TimeZone->-5.`],{-6,0},"Back",{0,1,0,0},{{-11,0},{-5,0}},{{0,0},{-1,0},{-2,0},{-3,0},{-4,0},{-5,0},{-6,0},{-7,0},{-8,0},{-9,0},{-10,0},{-9,0},{-8,0},{-7,0},{-6,0}}}]
-
-
 updateDirection2[dirs_List,buttons_List,current_String]:=Module[{i,obstacles,placeholder,placeholder2,nextdir},
 obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
 placeholder2=DeleteCases[dirs*obstacles,0];

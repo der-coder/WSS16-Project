@@ -61,13 +61,7 @@ RowBox[{"{",
 RowBox[{"\[CapitalDelta]t", ",", "0"}], "}"}], "*", "speed"}]}], "]"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
-{
-RowBox[{"statusOld", "[", 
-RowBox[{"[", "2", "]"}], "]"}], 
-RowBox[{
-RowBox[{"statusOld", "[", 
-RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
+RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]}
 },
 AllowedDimensions->{2, Automatic},
 Editable->True,
@@ -174,8 +168,9 @@ RowBox[{"statusOld", "[",
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
 {
 RowBox[{"{", 
+RowBox[{"{", 
 RowBox[{"statusOld", "[", 
-RowBox[{"[", "2", "]"}], "]"}], "}"}], 
+RowBox[{"[", "2", "]"}], "]"}], "}"}], "}"}], 
 RowBox[{
 RowBox[{"statusOld", "[", 
 RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
@@ -290,7 +285,9 @@ timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
-mapNew=updateMap[positionNew,timestampNew,previousStatus];
+
+If[Last[Values[controlBin]][[2]]=="Control",
+mapNew=updateMap[positionNew,timestampNew,previousStatus];]
 
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
@@ -301,6 +298,3 @@ DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
 Print[sensors,nextDirection]
 Pause[5];
 ]
-
-
-Last[Values[controlBin]][[4]]=="Execute"

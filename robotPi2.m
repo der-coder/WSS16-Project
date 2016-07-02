@@ -285,10 +285,12 @@ previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[positionNew,timestampNew,previousStatus];
-If[Last[Values[controlBin]][[2]]=="Scan",
-nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]],
-nextDirection=Last[Values[controlBin]][[3]]
-]
+
+nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
+
+If[Last[Values[controlBin]][[2]]=="Control",
+nextDirection=Last[Values[controlBin]][[3]]];
+
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection]
 Pause[5];]

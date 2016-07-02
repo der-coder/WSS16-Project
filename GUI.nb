@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    321884,       5937]
-NotebookOptionsPosition[    320673,       5890]
-NotebookOutlinePosition[    321005,       5905]
-CellTagsIndexPosition[    320962,       5902]
+NotebookDataLength[    322072,       5938]
+NotebookOptionsPosition[    320861,       5891]
+NotebookOutlinePosition[    321193,       5906]
+CellTagsIndexPosition[    321150,       5903]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3416,29 +3416,27 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Row", "[", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"{", 
        RowBox[{
         RowBox[{"Button", "[", 
-         RowBox[{"\"\<Start scanning\>\"", ",", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"If", "[", 
-            RowBox[{
+         RowBox[{"\"\<Clear bin\>\"", ",", 
+          RowBox[{"DatabinRemove", "[", 
+           RowBox[{"robotBin", ",", 
+            RowBox[{"1", ";;", 
+             RowBox[{"Length", "[", 
+              RowBox[{"Values", "[", "robotBin", "]"}], "]"}]}]}], "]"}], ",", 
+          RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
+          RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Button", "[", 
+         RowBox[{"\"\<Start scanning\>\"", ",", 
+          RowBox[{"DatabinAdd", "[", 
+           RowBox[{
+            RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
+            RowBox[{"{", 
              RowBox[{
-              RowBox[{"Values", "[", "robotBin", "]"}], "\[NotEqual]", " ", 
-              RowBox[{"{", "}"}]}], ",", 
-             RowBox[{"DatabinRemove", "[", 
-              RowBox[{"robotBin", ",", 
-               RowBox[{"1", ";;", 
-                RowBox[{"Length", "[", 
-                 RowBox[{"Values", "[", "robotBin", "]"}], "]"}]}]}], "]"}], 
-             ",", "Nothing"}], "]"}], ";", 
-           RowBox[{"DatabinAdd", "[", 
-            RowBox[{
-             RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{
-              "\"\<dU2MlCgB\>\"", ",", "\"\<Scan\>\"", ",", "\"\<Stop\>\"", 
-               ",", "\"\<Execute\>\""}], "}"}]}], "]"}]}], ",", 
+             "\"\<dU2MlCgB\>\"", ",", "\"\<Scan\>\"", ",", "\"\<Stop\>\"", 
+              ",", "\"\<Execute\>\""}], "}"}]}], "]"}], ",", 
           RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
           RowBox[{"FrameMargins", "\[Rule]", "Medium"}]}], "]"}], ",", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -4747,20 +4745,22 @@ kUgkCr/+D1+r5QI=
    3.676472131955907*^9}, {3.6764743004885597`*^9, 3.6764744601454973`*^9}, 
    3.676474514212302*^9, {3.676474558340107*^9, 3.676474562357017*^9}, {
    3.676474597667796*^9, 3.676474597957638*^9}, {3.67647531873975*^9, 
-   3.676475338055938*^9}}],
+   3.676475338055938*^9}, {3.676475894059573*^9, 3.676475908956374*^9}, {
+   3.6764759582029963`*^9, 3.6764759600503483`*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
     {
      TemplateBox[{
       ButtonBox[
-       "\"Start scanning\"", 
-        ButtonFunction :> (If[Values[$CellContext`robotBin] != {}, 
-           DatabinRemove[$CellContext`robotBin, 
-            Span[1, 
-             Length[
-              Values[$CellContext`robotBin]]]], Nothing]; DatabinAdd[
-           Databin["dSFSYX3k"], {"dU2MlCgB", "Scan", "Stop", "Execute"}]), 
+       "\"Clear bin\"", ButtonFunction :> DatabinRemove[$CellContext`robotBin, 
+          Span[1, 
+           Length[
+            Values[$CellContext`robotBin]]]], Appearance -> "Palette", 
+        FrameMargins -> Medium, Evaluator -> Automatic, Method -> 
+        "Preemptive"],ButtonBox[
+       "\"Start scanning\"", ButtonFunction :> DatabinAdd[
+          Databin["dSFSYX3k"], {"dU2MlCgB", "Scan", "Stop", "Execute"}], 
         Appearance -> "Palette", FrameMargins -> Medium, Evaluator -> 
         Automatic, Method -> "Preemptive"],ButtonBox[
        "\"Control mode\"", ButtonFunction :> DatabinAdd[
@@ -5048,7 +5048,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{347., {190., 197.}}]},
+      ImageSizeCache->{300., {108., 113.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -5883,7 +5883,8 @@ kUgkCr/+D1+r5QI=
  CellChangeTimes->{
   3.6764741821724577`*^9, 3.6764744916931877`*^9, {3.676474522086832*^9, 
    3.676474532993815*^9}, {3.67647457508607*^9, 3.6764745985259542`*^9}, 
-   3.676474888116391*^9, 3.6764753388153954`*^9}]
+   3.676474888116391*^9, 3.6764753388153954`*^9, 3.676475912208536*^9, 
+   3.676475961067531*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -5934,8 +5935,8 @@ Cell[178335, 3400, 76, 1, 30, "Output"]
 }, Open  ]],
 Cell[178426, 3404, 192, 4, 32, "Input"],
 Cell[CellGroupData[{
-Cell[178643, 3412, 75826, 1337, 2118, "Input"],
-Cell[254472, 4751, 66161, 1134, 674, "Output"]
+Cell[178643, 3412, 75878, 1336, 2117, "Input"],
+Cell[254524, 4750, 66297, 1136, 508, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

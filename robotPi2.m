@@ -272,6 +272,7 @@ controlBin=Databin["dSFSYX3k"];
 Print[Last[Values[controlBin]]]
 pins={4,17,27,22}; (*Input pins*)
 motors={5,6,13,19}; (*Output pins*)
+pause=2;
 
 sensors=updateSensors[pins];
 
@@ -291,7 +292,7 @@ DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
 Print[sensors,nextDirection,position];
 
-Pause[5];
+Pause[pause];
 
 If[
 Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
@@ -315,7 +316,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
 Print[sensors,nextDirection,positionNew]
-Pause[5];
+Pause[pause];
 ]
 ]
 
@@ -341,6 +342,6 @@ nextDirection=Last[Values[controlBin]][[3]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
 Print[sensors,nextDirection,positionNew]
-Pause[5];
+Pause[pause];
 ]
 ]

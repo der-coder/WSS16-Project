@@ -271,9 +271,11 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 nextDirection=RandomChoice[directions];
+If[Last[Values[controlBin]][[2]]=="Control",
+nextDirection=Last[Values[controlBin]][[3]]];
 
 bin=Databin[Last[Values[controlBin]][[1]]];
-If[Last[Values[controlBin]][[2]]=="Scan",DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]
+DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
 Print[sensors,nextDirection];
 
@@ -298,3 +300,6 @@ DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
 Print[sensors,nextDirection]
 Pause[5];
 ]
+
+
+Last[Values[controlBin]][[4]]=="Execute"

@@ -257,7 +257,7 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 nextDirection=RandomChoice[directions];
-bin=Databin[Last[Values[controlBin]][[1]]];
+bin=Databin[Last[Values[controlBin]][[1]][[1]]];
 If[Last[Values[controlBin]][[2]]=="Scan",DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]
 
 Print[sensors,nextDirection];

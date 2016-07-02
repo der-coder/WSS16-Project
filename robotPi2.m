@@ -288,8 +288,10 @@ Print[sensors,nextDirection];
 
 Pause[5];
 
+If[
+Last[Values[controlBin]][[2]]=="Scan",
 While[
-Last[Values[controlBin]][[4]]=="Execute",
+Last[Values[controlBin]][[2]]=="Scan",
 
 sensors=updateSensors[pins];
 
@@ -305,10 +307,9 @@ mapNew=updateMap[positionNew,timestampNew,previousStatus];
 
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
-If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
-
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
 Print[sensors,nextDirection]
 Pause[5];
+]
 ]

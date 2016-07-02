@@ -197,13 +197,58 @@ nextdir=RandomChoice[placeholder2]
 ]]
 
 
+moveRobot[where_String,motorPins_List]:=Module[{output},
+output=\!\(\*
+TagBox[GridBox[{
+{"\[Piecewise]", GridBox[{
+{
+RowBox[{"IntegerDigits", "[", 
+RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Forward\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
+RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Back\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
+RowBox[{"4", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Right\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
+RowBox[{"8", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Left\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
+RowBox[{"0", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Stop\>\""}]}
+},
+AllowedDimensions->{2, Automatic},
+Editable->True,
+GridBoxAlignment->{"Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+GridBoxItemSize->{"Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.84]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+Selectable->True]}
+},
+GridBoxAlignment->{"Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+GridBoxItemSize->{"Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.35]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],
+"Piecewise",
+DeleteWithContents->True,
+Editable->False,
+SelectWithContents->True,
+Selectable->False]\);
+DeviceWrite["GPIO",{motorPins[[1]]->output[1],motorPins[[2]]->output[2],motorPins[[3]]->output[3],motorPins[[4]]->output[4]}]
+]
+
+
 (* ::Subchapter:: *)
 (*Initialization*)
 
 
 controlBin=Databin["dSFSYX3k"];
 Print[Last[Values[controlBin]]]
-pins={4,17,27,22};
+pins={4,17,27,22}; (*Input pins*)
+motors={5,6,13,19}; (*Output pins*)
 
 sensors=updateSensors[pins];
 position={0,0};
@@ -212,44 +257,24 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 nextDirection=RandomChoice[directions];
-
-If[Last[Values[controlBin]]==True,bin=CreateDatabin["Name"->"Robot_SLAM"],Nothing]
-If[Last[Values[controlBin]]==True,DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]
+bin=Databin[Last[Values[controlBin]][[1]]];
+If[Last[Values[controlBin]][[2]]=="Scan",DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}],Nothing]
 
 Print[sensors,nextDirection];
 
-Pause[2];
+Pause[5];
 
-(*
+While[Last[Values[controlBin]][[4]]=="Execute",(* This needs to be updated because the databin entries will be lists of several elements *)
 sensors=updateSensors[pins];
 timestampNew=TimeObject[Now];
 previousStatus=Last[Values[bin]];
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[positionNew,timestampNew,previousStatus];
-nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
-DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
-Print[sensors,nextDirection];
-Pause[2];
-*)
-
-While[Last[Values[controlBin]]==True,(* This needs to be updated because the databin entries will be lists of several elements *)
-sensors=updateSensors[pins];
-timestampNew=TimeObject[Now];
-previousStatus=Last[Values[bin]];
-positionNew=updatePosition[timestampNew,previousStatus,velocity];
-wallsNew=updateWalls2[positionNew,previousStatus,sensors];
-mapNew=updateMap[positionNew,timestampNew,previousStatus];
-nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
+If[Last[Values[controlBin]][[2]]=="Scan",
+nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]],
+nextDirection=Last[Values[controlBin]][[3]]
+]
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 Print[sensors,nextDirection]
-Pause[1];]
-
-
-(* ::Subchapter:: *)
-(*Control the robot*)
-
-
-While[Last[Values[controlBin]]==False,(* This needs to be updated because the databin entries will be lists of several elements *)
-
-]
+Pause[5];]

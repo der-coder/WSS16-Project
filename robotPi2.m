@@ -315,7 +315,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
-Print[sensors,nextDirection,position]
+Print[sensors,nextDirection,positionNew]
 Pause[5];
 ]
 ]
@@ -341,7 +341,7 @@ nextDirection=Last[Values[controlBin]][[3]];
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
-Print[sensors,nextDirection]
+Print[sensors,nextDirection,positionNew]
 Pause[5];
 ]
 ]

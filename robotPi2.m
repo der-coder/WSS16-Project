@@ -295,9 +295,9 @@ Print[sensors,nextDirection,position];
 Pause[5];
 
 If[
-Last[Values[controlBin]][[2]]=="Scan",
+Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
 While[
-Last[Values[controlBin]][[2]]=="Scan",
+Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 
@@ -321,9 +321,9 @@ Pause[5];
 ]
 
 If[
-Last[Values[controlBin]][[2]]=="Control",
+Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
 While[
-Last[Values[controlBin]][[2]]=="Control",
+Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 

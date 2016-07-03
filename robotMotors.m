@@ -284,7 +284,7 @@ DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
 Print[sensors,nextDirection,position];
 
-(* moveRobot[nextDirection, motors];*)
+moveRobot[nextDirection, motors];
 
 Pause[pause];
 

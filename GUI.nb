@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    186394,       3595]
-NotebookOptionsPosition[    185388,       3555]
-NotebookOutlinePosition[    185720,       3570]
-CellTagsIndexPosition[    185677,       3567]
+NotebookDataLength[    186396,       3595]
+NotebookOptionsPosition[    185390,       3555]
+NotebookOutlinePosition[    185722,       3570]
+CellTagsIndexPosition[    185679,       3567]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -634,7 +634,7 @@ lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
                     "DD9f2977a33e0-6abf-4de8-975a-8ba15fdedd12"}], Except[
                     Blank[Association]] -> {}, {0}], "Size", 0]], 
                 StandardForm], 0.1,
-               ImageSizeCache->{7., {0., 8.}}],
+               ImageSizeCache->{27., {4., 13.}}],
               "SummaryItem"]}]},
            {
             RowBox[{
@@ -2710,7 +2710,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{347., {190., 197.}}]},
+      ImageSizeCache->{300., {108., 113.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -3578,22 +3578,22 @@ Cell[922, 34, 13295, 318, 65, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[14254, 357, 183, 3, 32, "Input"],
-Cell[14440, 362, 13379, 323, 215, "Output"]
+Cell[14440, 362, 13381, 323, 221, "Output"]
 }, Open  ]],
-Cell[27834, 688, 489, 10, 121, "Text"],
+Cell[27836, 688, 489, 10, 121, "Text"],
 Cell[CellGroupData[{
-Cell[28348, 702, 268, 7, 52, "Input"],
-Cell[28619, 711, 13395, 323, 65, "Output"]
+Cell[28350, 702, 268, 7, 52, "Input"],
+Cell[28621, 711, 13395, 323, 65, "Output"]
 }, Open  ]],
-Cell[42029, 1037, 204, 5, 46, "Input",
+Cell[42031, 1037, 204, 5, 46, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[42258, 1046, 110, 1, 63, "Subchapter"],
-Cell[42371, 1049, 196, 5, 48, "Input",
+Cell[42260, 1046, 110, 1, 63, "Subchapter"],
+Cell[42373, 1049, 196, 5, 48, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[42592, 1058, 76440, 1350, 2167, "Input"],
-Cell[119035, 2410, 66316, 1140, 674, "Output"]
+Cell[42594, 1058, 76440, 1350, 2167, "Input"],
+Cell[119037, 2410, 66316, 1140, 508, "Output"]
 }, {2}]]
 }, Open  ]]
 }, Open  ]]

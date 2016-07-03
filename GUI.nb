@@ -117,7 +117,7 @@ lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
                     "DD9f2fa87f231-e0d8-4273-bf8b-7b4d120eb11f"}], Except[
                     Blank[Association]] -> {}, {0}], "EntryCount", 0], 
                 StandardForm],
-               ImageSizeCache->{14., {0., 8.}}],
+               ImageSizeCache->{21., {0., 8.}}],
               "SummaryItem"]}]}
           },
           AutoDelete->False,
@@ -2710,7 +2710,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{347., {201., 208.}}]},
+      ImageSizeCache->{347., {190., 197.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -3593,7 +3593,7 @@ Cell[42371, 1049, 196, 5, 48, "Input",
  InitializationCell->True],
 Cell[CellGroupData[{
 Cell[42592, 1058, 76440, 1350, 2167, "Input"],
-Cell[119035, 2410, 66316, 1140, 696, "Output"]
+Cell[119035, 2410, 66316, 1140, 674, "Output"]
 }, {2}]]
 }, Open  ]]
 }, Open  ]]

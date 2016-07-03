@@ -289,7 +289,7 @@ directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
 pause=2;
 nextDirection=RandomChoice[directions];
-If[instructions[[2]]=="Control",nextDirection="Stop"];
+If[instructions[[2]]=="Control",nextDirection="Stop"]
 bin=Databin[instructions[[1]]];
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 

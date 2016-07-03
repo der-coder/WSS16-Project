@@ -289,9 +289,9 @@ directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
 pause=2;
 nextDirection=RandomChoice[directions];
-If[instructions[[2]]=="Control",nextDirection="Stop"]
+If[instructions[[2]]=="Control",nextDirection="Stop"];
 bin=Databin[instructions[[1]]];
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
+DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 
 
 (* ::Subsection:: *)
@@ -329,12 +329,13 @@ If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampN
 
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
 instructions=Last[Values[controlBin]];
-Pause[pause];]]
+Pause[pause]
+]
+]
 
 
 (* ::Section:: *)
 (*Control mode*)
-
 
 
 (* Control mode *)
@@ -360,4 +361,6 @@ nextDirection=instructions[[3]];
 If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
 instructions=Last[Values[controlBin]];
 Print[sensors,nextDirection,positionNew]
-Pause[pause];]]
+Pause[pause]
+]
+]

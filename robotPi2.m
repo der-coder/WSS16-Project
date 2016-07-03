@@ -252,8 +252,14 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{motorPins[[1]]->output[1],motorPins[[2]]->output[2],motorPins[[3]]->output[3],motorPins[[4]]->output[4]}]
+DeviceWrite["GPIO",{motorPins[[1]]->output[[1]],motorPins[[2]]->output[[2]],motorPins[[3]]->output[[3]],motorPins[[4]]->output[[4]]}]
 ]
+
+
+motors[[1]]->IntegerDigits[1,2,4][[1]]
+motors[[2]]->IntegerDigits[1,2,4][[2]]
+motors[[3]]->IntegerDigits[1,2,4][[3]]
+motors[[4]]->IntegerDigits[1,2,4][[4]]
 
 
 (* ::Subchapter:: *)
@@ -291,8 +297,8 @@ Pause[pause];
 (* Scan mode *)
 (* Add an if to check if there were anycollisions? This would reduce the amount of updloads to the databin. *)
 
-If[Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
-While[Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
+If[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
+While[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 

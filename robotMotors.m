@@ -265,8 +265,7 @@ DeviceWrite["GPIO",{mpins[[1]]->output[[1]],mpins[[2]]->output[[2]],mpins[[3]]->
 
 
 controlBin=Databin["dSFSYX3k"];
-instructions=Last[Values[controlBin]];
-Print[instructions] (* Ensure that we can connect to the control bin *)
+Print[Last[Values[controlBin]]] (* Ensure that we can connect to the control bin *)
 
 
 (* ::Section:: *)
@@ -289,8 +288,8 @@ directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
 pause=2;
 nextDirection=RandomChoice[directions];
-If[instructions[[2]]=="Control",nextDirection="Stop"];
-bin=Databin[instructions[[1]]];
+If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
+bin=Databin[Last[Values[controlBin]][[1]]];
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 
 
@@ -308,8 +307,8 @@ Print[sensors,nextDirection,position];
 (* Scan mode *)
 (* Add an if to check if there were any collisions? This would reduce the amount of updloads to the databin. *)
 
-If[instructions[[2]]=="Scan" && instructions[[4]]=="Execute",
-While[instructions[[2]]=="Scan" && instructions[[4]]=="Execute",
+If[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
+While[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 
@@ -325,10 +324,9 @@ mapNew=updateMap[positionNew,timestampNew,previousStatus];
 
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
-If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
+If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
 
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
-instructions=Last[Values[controlBin]];
 Pause[pause]
 ]
 ]
@@ -341,8 +339,8 @@ Pause[pause]
 (* Control mode *)
 (* Should I remove the update status part? *)
 
-If[instructions[[2]]=="Control"&&instructions[[4]]=="Execute",
-While[instructions[[2]]=="Control"&&instructions[[4]]=="Execute",
+If[Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
+While[Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 
@@ -356,10 +354,9 @@ wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 
 mapNew=updateMap[positionNew,timestampNew,previousStatus];
 
-nextDirection=instructions[[3]];
+nextDirection=Last[Values[controlBin]][[3]];
 
-If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
-instructions=Last[Values[controlBin]];
+If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
 Print[sensors,nextDirection,positionNew]
 Pause[pause]
 ]

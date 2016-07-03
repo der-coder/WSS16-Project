@@ -366,3 +366,11 @@ moveRobot[nextDirection,motors]
 Pause[pause]
 ]
 ]
+
+
+(* ::Section:: *)
+(*Shutdown code*)
+
+
+DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
+moveRobot["Stop",motors]

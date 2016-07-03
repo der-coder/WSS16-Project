@@ -265,7 +265,7 @@ DeviceWrite["GPIO",{mpins[[1]]->output[[1]],mpins[[2]]->output[[2]],mpins[[3]]->
 
 
 controlBin=Databin["dSFSYX3k"];
-instructions=Last[Values[controlBin]];
+instructions=Dynamic[Last[Values[controlBin]]];
 Print[instructions] (* Ensure that we can connect to the control bin *)
 
 

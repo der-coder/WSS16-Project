@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 (* ::Title:: *)
-(*Robot code*)
+(*Simulation attempt #01*)
 
 
 (* ::Subchapter:: *)
@@ -212,7 +212,7 @@ nextdir=RandomChoice[placeholder2]
 ]]
 
 
-moveRobot[where_String,motorPins_List]:=Module[{output,mpins=motorPins},
+moveRobot[where_String,motorPins_List]:=Module[{output},
 output=\!\(\*
 TagBox[GridBox[{
 {"\[Piecewise]", GridBox[{
@@ -252,7 +252,7 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{mpins[[1]]->output[[1]],mpins[[2]]->output[[2]],mpins[[3]]->output[[3]],mpins[[4]]->output[[4]]}]
+DeviceWrite["GPIO",{motorPins[[1]]->output[1],motorPins[[2]]->output[2],motorPins[[3]]->output[3],motorPins[[4]]->output[4]}]
 ]
 
 
@@ -284,15 +284,12 @@ DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
 Print[sensors,nextDirection,position];
 
-moveRobot[nextDirection, motors];
-
 Pause[pause];
 
-(* Scan mode *)
-(* Add an if to check if there were anycollisions? This would reduce the amount of updloads to the databin. *)
-
-If[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
-While[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
+If[
+Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
+While[
+Last[Values[controlBin]][[2]]=="Scan"&&Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 
@@ -311,18 +308,14 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}];
 
 Print[sensors,nextDirection,positionNew]
-
-moveRobot[nextDirection, motors];
-
 Pause[pause];
 ]
 ]
 
-(* Control mode *)
-(* Should I remove the update status part? *)
-
-If[Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
-While[Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
+If[
+Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
+While[
+Last[Values[controlBin]][[2]]=="Control"&&Last[Values[controlBin]][[4]]=="Execute",
 
 sensors=updateSensors[pins];
 

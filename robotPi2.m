@@ -212,7 +212,7 @@ nextdir=RandomChoice[placeholder2]
 ]]
 
 
-moveRobot[where_String,motorPins_List]:=Module[{output},
+moveRobot[where_String,motorPins_List]:=Module[{output,mpins=motorPins},
 output=\!\(\*
 TagBox[GridBox[{
 {"\[Piecewise]", GridBox[{
@@ -252,14 +252,17 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{motorPins[[1]]->output[[1]],motorPins[[2]]->output[[2]],motorPins[[3]]->output[[3]],motorPins[[4]]->output[[4]]}]
+DeviceWrite["GPIO",{mpins[[1]]->output[[1]],mpins[[2]]->output[[2]],mpins[[3]]->output[[3]],mpins[[4]]->output[[4]]}]
 ]
 
 
-motors[[1]]->IntegerDigits[1,2,4][[1]]
-motors[[2]]->IntegerDigits[1,2,4][[2]]
-motors[[3]]->IntegerDigits[1,2,4][[3]]
-motors[[4]]->IntegerDigits[1,2,4][[4]]
+x=IntegerDigits[1,2,4]
+
+
+motors[[1]]->x[[1]]
+motors[[2]]->x[[2]]
+motors[[3]]->x[[3]]
+motors[[4]]->x[[4]]
 
 
 (* ::Subchapter:: *)

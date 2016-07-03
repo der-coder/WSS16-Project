@@ -265,7 +265,7 @@ DeviceWrite["GPIO",{mpins[[1]]->output[[1]],mpins[[2]]->output[[2]],mpins[[3]]->
 
 
 controlBin=Databin["dSFSYX3k"];
-instructions=Dynamic[Last[Values[controlBin]]];
+instructions=Last[Values[controlBin]];
 Print[instructions] (* Ensure that we can connect to the control bin *)
 
 
@@ -328,7 +328,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
 
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
-
+instructions=Last[Values[controlBin]];
 Pause[pause];]]
 
 
@@ -358,6 +358,6 @@ mapNew=updateMap[positionNew,timestampNew,previousStatus];
 nextDirection=instructions[[3]];
 
 If[Total[sensors]!=0||nexDirection!=instructions[[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
-
+instructions=Last[Values[controlBin]];
 Print[sensors,nextDirection,positionNew]
 Pause[pause];]]

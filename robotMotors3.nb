@@ -1,0 +1,924 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31942,        914]
+NotebookOptionsPosition[     30473,        858]
+NotebookOutlinePosition[     30798,        873]
+CellTagsIndexPosition[     30755,        870]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Robot code", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Subchapter"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateSensors", "[", "pins_List", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"temporary", ",", "sensorVector"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"temporary", "=", 
+      RowBox[{"DeviceRead", "[", 
+       RowBox[{"\"\<GPIO\>\"", ",", "pins"}], "]"}]}], ";", 
+     RowBox[{"sensorVector", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"temporary", "[", 
+         RowBox[{"pins", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "pins", "]"}]}], "}"}]}], "]"}]}]}]}], 
+   "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getTimeDifference", "[", 
+   RowBox[{"tNow_", ",", "tBefore_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", 
+    RowBox[{"Round", "[", 
+     RowBox[{"QuantityMagnitude", "[", 
+      RowBox[{"UnitConvert", "[", 
+       RowBox[{
+        RowBox[{"tNow", "-", "tBefore"}], ",", "\"\<Seconds\>\""}], "]"}], 
+      "]"}], "]"}]}], "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updatePosition", "[", 
+   RowBox[{"currentTime_", ",", "statusOld_List", ",", "speed_List"}], "]"}], 
+  ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"newPosition", ",", 
+      RowBox[{"\[CapitalDelta]t", "=", 
+       RowBox[{"getTimeDifference", "[", 
+        RowBox[{"currentTime", ",", 
+         RowBox[{"statusOld", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}]}], "}"}], ",", "\n", 
+    RowBox[{"newPosition", "=", 
+     TagBox[GridBox[{
+        {"\[Piecewise]", GridBox[{
+           {
+            RowBox[{"Round", "[", 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "\[CapitalDelta]t"}], "}"}], "*", 
+               "speed"}]}], "]"}], 
+            RowBox[{
+             RowBox[{"statusOld", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Forward\>\""}]},
+           {
+            RowBox[{"Round", "[", 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "-", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "\[CapitalDelta]t"}], "}"}], "*", 
+               "speed"}]}], "]"}], 
+            RowBox[{
+             RowBox[{"statusOld", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Back\>\""}]},
+           {
+            RowBox[{"Round", "[", 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "-", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\[CapitalDelta]t", ",", "0"}], "}"}], "*", 
+               "speed"}]}], "]"}], 
+            RowBox[{
+             RowBox[{"statusOld", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
+           {
+            RowBox[{"Round", "[", 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"\[CapitalDelta]t", ",", "0"}], "}"}], "*", 
+               "speed"}]}], "]"}], 
+            RowBox[{
+             RowBox[{"statusOld", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
+           {
+            RowBox[{"statusOld", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], 
+            RowBox[{
+             RowBox[{"statusOld", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
+          },
+          AllowedDimensions->{2, Automatic},
+          Editable->True,
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, 
+            "ItemsIndexed" -> {}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{1.}}, "RowsIndexed" -> {}, "Items" -> {}, 
+            "ItemsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.84]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+            "ItemsIndexed" -> {}},
+          Selectable->True]}
+       },
+       GridBoxAlignment->{
+        "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+          "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+         "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.35]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+         "ItemsIndexed" -> {}}],
+      "Piecewise",
+      DeleteWithContents->True,
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]}]}], "\n", "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateWalls2", "[", 
+   RowBox[{"location_", ",", "statusOld_List", ",", "sensorsNow_List"}], 
+   "]"}], ":=", "\n", 
+  RowBox[{"Module", "[", "\n", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"x", "=", 
+       RowBox[{"location", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+      RowBox[{"y", "=", 
+       RowBox[{"location", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], ",", "newWalls", ",", 
+      "blockPerimeter"}], "}"}], ",", "\n", "\n", 
+    RowBox[{
+     RowBox[{"blockPerimeter", "=", 
+      RowBox[{"sensorsNow", "*", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{"y", "+", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"x", "+", "1"}], ",", "y"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{"y", "-", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"x", "-", "1"}], ",", "y"}], "}"}]}], "}"}]}]}], ";", "\n",
+      "\n", 
+     RowBox[{"blockPerimeter", "=", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{"blockPerimeter", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+     RowBox[{"newWalls", "=", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"statusOld", "[", 
+         RowBox[{"[", "5", "]"}], "]"}], ",", "blockPerimeter"}], "]"}]}], 
+     ";", "\n", "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "newWalls", "]"}], ">", "1"}], ",", 
+       RowBox[{"newWalls", "=", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"newWalls", ",", 
+          RowBox[{"{", "}"}]}], "]"}]}], ",", "Nothing"}], "]"}], ";", "\n", 
+     "\n", "newWalls"}]}], "\n", "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateMap", "[", 
+   RowBox[{"location_List", ",", "currentTime_", ",", "statusOld_List"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", "\n", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"newMap", "=", 
+       RowBox[{"statusOld", "[", 
+        RowBox[{"[", "6", "]"}], "]"}]}], ",", "mapSurface", ",", 
+      RowBox[{"\[CapitalDelta]t", "=", 
+       RowBox[{"getTimeDifference", "[", 
+        RowBox[{"currentTime", ",", 
+         RowBox[{"statusOld", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}]}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"mapSurface", "=", 
+      TagBox[GridBox[{
+         {"\[Piecewise]", GridBox[{
+            {
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"location", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"statusOld", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "2"}], "]"}], "]"}], "+", "i"}]}], 
+                "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "\[CapitalDelta]t"}], "}"}]}], "]"}], 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Forward\>\""}]},
+            {
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"location", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"statusOld", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "2"}], "]"}], "]"}], "-", "i"}]}], 
+                "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "\[CapitalDelta]t"}], "}"}]}], "]"}], 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Back\>\""}]},
+            {
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"statusOld", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}], "+", "i"}], ",", 
+                 RowBox[{"location", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "\[CapitalDelta]t"}], "}"}]}], "]"}], 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Right\>\""}]},
+            {
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"statusOld", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}], "-", "i"}], ",", 
+                 RowBox[{"location", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "\[CapitalDelta]t"}], "}"}]}], "]"}], 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Left\>\""}]},
+            {
+             RowBox[{"{", 
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "}"}], 
+             RowBox[{
+              RowBox[{"statusOld", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], "==", "\"\<Stop\>\""}]}
+           },
+           AllowedDimensions->{2, Automatic},
+           Editable->True,
+           
+           GridBoxAlignment->{
+            "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+             "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           
+           GridBoxItemSize->{
+            "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+             "Rows" -> {{1.}}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           GridBoxSpacings->{"Columns" -> {
+               Offset[0.27999999999999997`], {
+                Offset[0.84]}, 
+               Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+               Offset[0.2], {
+                Offset[0.4]}, 
+               Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           Selectable->True]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, 
+          "ItemsIndexed" -> {}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+           "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.35]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+          "ItemsIndexed" -> {}}],
+       "Piecewise",
+       DeleteWithContents->True,
+       Editable->False,
+       SelectWithContents->True,
+       Selectable->False]}], ";", "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"statusOld", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "!=", "\"\<Stop\>\""}], ",", 
+       RowBox[{"newMap", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"newMap", ",", "mapSurface"}], "]"}]}]}], "]"}], ";", "\n", 
+     "newMap"}]}], "\n", "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateDirection2", "[", 
+   RowBox[{"dirs_List", ",", "buttons_List", ",", "current_String"}], "]"}], ":=",
+   "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "i", ",", "obstacles", ",", "placeholder", ",", "placeholder2", ",", 
+      "nextdir", ",", "placeholder3"}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"obstacles", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"1", "-", 
+         RowBox[{"buttons", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "buttons", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\n", 
+     RowBox[{"placeholder3", "=", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{"dirs", ",", "\"\<Stop\>\""}], "]"}]}], ";", "\n", 
+     RowBox[{"placeholder2", "=", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{
+        RowBox[{"placeholder3", "*", "obstacles"}], ",", "0"}], "]"}]}], ";", 
+     "\n", 
+     RowBox[{"If", "[", "\n", 
+      RowBox[{
+       RowBox[{"MemberQ", "[", 
+        RowBox[{
+         RowBox[{"placeholder3", "*", "obstacles"}], ",", "current"}], "]"}], 
+       ",", "\n", 
+       RowBox[{"nextdir", "=", "current"}], ",", "\n", 
+       RowBox[{"nextdir", "=", 
+        RowBox[{"RandomChoice", "[", "placeholder2", "]"}]}]}], "\n", 
+      "]"}]}]}], "]"}]}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"moveRobot", "[", 
+   RowBox[{"where_String", ",", "motorPins_List"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"output", ",", 
+      RowBox[{"mpins", "=", "motorPins"}]}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"output", "=", 
+      TagBox[GridBox[{
+         {"\[Piecewise]", GridBox[{
+            {
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
+             RowBox[{"where", "==", "\"\<Forward\>\""}]},
+            {
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
+             RowBox[{"where", "==", "\"\<Back\>\""}]},
+            {
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"4", ",", "2", ",", "4"}], "]"}], 
+             RowBox[{"where", "==", "\"\<Right\>\""}]},
+            {
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"8", ",", "2", ",", "4"}], "]"}], 
+             RowBox[{"where", "==", "\"\<Left\>\""}]},
+            {
+             RowBox[{"IntegerDigits", "[", 
+              RowBox[{"0", ",", "2", ",", "4"}], "]"}], 
+             RowBox[{"where", "==", "\"\<Stop\>\""}]}
+           },
+           AllowedDimensions->{2, Automatic},
+           Editable->True,
+           
+           GridBoxAlignment->{
+            "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+             "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           
+           GridBoxItemSize->{
+            "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+             "Rows" -> {{1.}}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           GridBoxSpacings->{"Columns" -> {
+               Offset[0.27999999999999997`], {
+                Offset[0.84]}, 
+               Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+               Offset[0.2], {
+                Offset[0.4]}, 
+               Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+             "ItemsIndexed" -> {}},
+           Selectable->True]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}, "Items" -> {}, 
+          "ItemsIndexed" -> {}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+           "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.35]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, 
+          "ItemsIndexed" -> {}}],
+       "Piecewise",
+       DeleteWithContents->True,
+       Editable->False,
+       SelectWithContents->True,
+       Selectable->False]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"DeviceWrite", "[", 
+       RowBox[{"\"\<GPIO\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"5", "->", 
+           RowBox[{"output", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+          RowBox[{"6", "->", 
+           RowBox[{"output", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+          RowBox[{"13", "->", 
+           RowBox[{"output", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+          RowBox[{"19", "->", 
+           RowBox[{"output", "[", 
+            RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}]}], "]"}], "\n", 
+      RowBox[{"Print", "[", "output", "]"}]}]}]}], "\n", "]"}]}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subchapter"],
+
+Cell[CellGroupData[{
+
+Cell["Data from the control bin", "Section"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"controlBin", "=", 
+   RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Last", "[", 
+    RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Ensure", " ", "that", " ", "we", " ", "can", " ", "connect", " ", "to", 
+    " ", "the", " ", "control", " ", "bin"}], " ", "*)"}]}]}], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["GPIO pin assignment", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pins", "=", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "17", ",", "27", ",", "22"}], "}"}]}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{"Input", " ", "pins"}], "*)"}], "\n", 
+  RowBox[{"motors", "=", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "6", ",", "13", ",", "19"}], "}"}]}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{"Output", " ", "pins"}], "*)"}]}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initial position data", "Section"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"position", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"velocity", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Adjust", " ", "this", " ", "to", " ", "reflect", " ", "the", " ", 
+     "change", " ", "in", " ", "scale"}], ",", " ", 
+    RowBox[{
+    "currently", " ", "the", " ", "robot", " ", "is", " ", "used", " ", "as", 
+     " ", "unit", " ", "of", " ", "measurement"}]}], " ", "*)"}], "\n", 
+  RowBox[{"map", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"walls", "=", 
+   RowBox[{"{", 
+    RowBox[{"{", "}"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"directions", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Forward\>\"", ",", "\"\<Right\>\"", ",", "\"\<Back\>\"", ",", 
+     "\"\<Left\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"sensors", "=", 
+   RowBox[{"updateSensors", "[", "pins", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"pause", "=", "2"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"nextDirection", "=", 
+   RowBox[{"RandomChoice", "[", "directions", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Last", "[", 
+       RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "==", "\"\<Control\>\""}], ",", 
+    RowBox[{"nextDirection", "=", "\"\<Stop\>\""}]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"bin", "=", 
+   RowBox[{"Databin", "[", 
+    RowBox[{
+     RowBox[{"Last", "[", 
+      RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DatabinAdd", "[", 
+   RowBox[{"bin", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"TimeObject", "[", "Now", "]"}], ",", "position", ",", 
+      "nextDirection", ",", "sensors", ",", "walls", ",", "map"}], "}"}]}], 
+   "]"}], "\n"}], "\n", 
+ RowBox[{"moveRobot", "[", 
+  RowBox[{"nextDirection", ",", "motors"}], "]"}]}], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["Print = Best debug technique!", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"sensors", ",", "nextDirection", ",", "position"}], "]"}], 
+  ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Scan mode", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Scan", " ", "mode"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Add", " ", "an", " ", "if", " ", "to", " ", "check", " ", "if", " ", 
+    "there", " ", "were", " ", "any", " ", 
+    RowBox[{"collisions", "?", " ", "This"}], " ", "would", " ", "reduce", 
+    " ", "the", " ", "amount", " ", "of", " ", "updloads", " ", "to", " ", 
+    "the", " ", 
+    RowBox[{"databin", "."}]}], " ", "*)"}], "\n", "\n", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", 
+        RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "==", "\"\<Scan\>\""}], " ", "&&", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", 
+        RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+       RowBox[{"[", "4", "]"}], "]"}], "==", "\"\<Execute\>\""}]}], ",", "\n", 
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Last", "[", 
+          RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "==", "\"\<Scan\>\""}], " ", "&&", 
+       " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Last", "[", 
+          RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+         RowBox[{"[", "4", "]"}], "]"}], "==", "\"\<Execute\>\""}]}], ",", 
+      "\n", "\n", 
+      RowBox[{
+       RowBox[{"sensors", "=", 
+        RowBox[{"updateSensors", "[", "pins", "]"}]}], ";", "\n", "\n", 
+       RowBox[{"timestampNew", "=", 
+        RowBox[{"TimeObject", "[", "Now", "]"}]}], ";", "\n", "\n", 
+       RowBox[{"previousStatus", "=", 
+        RowBox[{"Last", "[", 
+         RowBox[{"Values", "[", "bin", "]"}], "]"}]}], ";", "\n", "\n", 
+       RowBox[{"positionNew", "=", 
+        RowBox[{"updatePosition", "[", 
+         RowBox[{"timestampNew", ",", "previousStatus", ",", "velocity"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"wallsNew", "=", 
+        RowBox[{"updateWalls2", "[", 
+         RowBox[{"positionNew", ",", "previousStatus", ",", "sensors"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"mapNew", "=", 
+        RowBox[{"updateMap", "[", 
+         RowBox[{"positionNew", ",", "timestampNew", ",", "previousStatus"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"nextDirection", "=", 
+        RowBox[{"updateDirection2", "[", 
+         RowBox[{"directions", ",", "sensors", ",", 
+          RowBox[{"previousStatus", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";", "\n", "\n", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+         "Due", " ", "to", " ", "upload", " ", "restrictions", " ", "for", 
+          " ", "the", " ", "Wolfram", " ", "Data", " ", "Drop"}], ",", " ", 
+         RowBox[{
+         "the", " ", "If", " ", "statements", " ", "ensures", " ", "that", 
+          " ", "data", " ", "is", " ", "only", " ", "updloaded", " ", "when", 
+          " ", "a", " ", "change", " ", "in", " ", "direction", " ", "or", 
+          " ", "sensor", " ", "readings", " ", "occur"}]}], " ", "*)"}], "\n", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Total", "[", "sensors", "]"}], "!=", "0"}], "||", 
+          RowBox[{"nexDirection", "!=", 
+           RowBox[{
+            RowBox[{"Last", "[", 
+             RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}]}], ",", 
+         RowBox[{"DatabinAdd", "[", 
+          RowBox[{"bin", ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "timestampNew", ",", "positionNew", ",", "nextDirection", ",", 
+             "sensors", ",", "wallsNew", ",", "mapNew"}], "}"}]}], "]"}]}], 
+        "]"}], ";", " ", "\n", "\n", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"sensors", ",", "nextDirection", ",", "positionNew"}], "]"}],
+         " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Mad", " ", "debug", " ", "skills"}], " ", "*)"}], "\n", 
+        RowBox[{"moveRobot", "[", 
+         RowBox[{"nextDirection", ",", "motors"}], "]"}], "\n", 
+        RowBox[{"Pause", "[", "pause", "]"}]}]}]}], "\n", "]"}]}], "\n", 
+   "]"}]}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Control mode", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Control", " ", "mode"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Should", " ", "I", " ", "remove", " ", "the", " ", "update", " ", 
+    "status", " ", 
+    RowBox[{"part", "?"}]}], " ", "*)"}], "\n", "\n", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", 
+        RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "==", "\"\<Control\>\""}], "&&", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", 
+        RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+       RowBox[{"[", "4", "]"}], "]"}], "==", "\"\<Execute\>\""}]}], ",", "\n", 
+    RowBox[{"While", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Last", "[", 
+          RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "==", "\"\<Control\>\""}], "&&", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Last", "[", 
+          RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+         RowBox[{"[", "4", "]"}], "]"}], "==", "\"\<Execute\>\""}]}], ",", 
+      "\n", "\n", 
+      RowBox[{
+       RowBox[{"sensors", "=", 
+        RowBox[{"updateSensors", "[", "pins", "]"}]}], ";", "\n", "\n", 
+       RowBox[{"timestampNew", "=", 
+        RowBox[{"TimeObject", "[", "Now", "]"}]}], ";", "\n", "\n", 
+       RowBox[{"previousStatus", "=", 
+        RowBox[{"Last", "[", 
+         RowBox[{"Values", "[", "bin", "]"}], "]"}]}], ";", "\n", "\n", 
+       RowBox[{"positionNew", "=", 
+        RowBox[{"updatePosition", "[", 
+         RowBox[{"timestampNew", ",", "previousStatus", ",", "velocity"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"wallsNew", "=", 
+        RowBox[{"updateWalls2", "[", 
+         RowBox[{"positionNew", ",", "previousStatus", ",", "sensors"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"mapNew", "=", 
+        RowBox[{"updateMap", "[", 
+         RowBox[{"positionNew", ",", "timestampNew", ",", "previousStatus"}], 
+         "]"}]}], ";", "\n", "\n", 
+       RowBox[{"nextDirection", "=", 
+        RowBox[{
+         RowBox[{"Last", "[", 
+          RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], ";", "\n", "\n", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Total", "[", "sensors", "]"}], "!=", "0"}], "||", 
+          RowBox[{"nexDirection", "!=", 
+           RowBox[{
+            RowBox[{"Last", "[", 
+             RowBox[{"Values", "[", "controlBin", "]"}], "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}]}], ",", 
+         RowBox[{"DatabinAdd", "[", 
+          RowBox[{"bin", ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "timestampNew", ",", "positionNew", ",", "nextDirection", ",", 
+             "sensors", ",", "wallsNew", ",", "mapNew"}], "}"}]}], "]"}]}], 
+        "]"}], ";", "\n", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"sensors", ",", "nextDirection", ",", "positionNew"}], "]"}],
+         "\n", 
+        RowBox[{"moveRobot", "[", 
+         RowBox[{"nextDirection", ",", "motors"}], "]"}], "\n", 
+        RowBox[{"Pause", "[", "pause", "]"}]}]}]}], "\n", "]"}]}], "\n", 
+   "]"}]}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Shutdown code", "Section"],
+
+Cell[BoxData[{
+ RowBox[{"DatabinAdd", "[", 
+  RowBox[{"bin", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "timestampNew", ",", "positionNew", ",", "nextDirection", ",", "sensors", 
+     ",", "wallsNew", ",", "mapNew"}], "}"}]}], "]"}], "\n", 
+ RowBox[{"moveRobot", "[", 
+  RowBox[{"\"\<Stop\>\"", ",", "motors"}], "]"}]}], "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{679, 709},
+WindowMargins->{{0, Automatic}, {0, 29}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (June 15, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 27, 0, 93, "Title"],
+Cell[CellGroupData[{
+Cell[632, 26, 31, 0, 63, "Subchapter"],
+Cell[666, 28, 685, 20, 53, "Code"],
+Cell[1354, 50, 415, 12, 53, "Code"],
+Cell[1772, 64, 4341, 112, 203, "Code"],
+Cell[6116, 178, 1843, 53, 293, "Code"],
+Cell[7962, 233, 5742, 146, 267, "Code"],
+Cell[13707, 381, 1397, 39, 230, "Code"],
+Cell[15107, 422, 3703, 94, 223, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18847, 521, 36, 0, 63, "Subchapter"],
+Cell[CellGroupData[{
+Cell[18908, 525, 44, 0, 65, "Section"],
+Cell[18955, 527, 434, 11, 73, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19426, 543, 38, 0, 65, "Section"],
+Cell[19467, 545, 389, 11, 69, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19893, 561, 40, 0, 65, "Section"],
+Cell[19936, 563, 2125, 64, 280, "Code"],
+Cell[CellGroupData[{
+Cell[22086, 631, 51, 0, 45, "Subsection"],
+Cell[22140, 633, 137, 4, 53, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22326, 643, 28, 0, 65, "Section"],
+Cell[22357, 645, 4258, 101, 552, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26652, 751, 31, 0, 65, "Section"],
+Cell[26686, 753, 3350, 85, 517, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30073, 843, 32, 0, 70, "Section"],
+Cell[30108, 845, 325, 8, 70, "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

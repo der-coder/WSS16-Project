@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    164449,       2997]
-NotebookOptionsPosition[    163912,       2973]
-NotebookOutlinePosition[    164244,       2988]
-CellTagsIndexPosition[    164201,       2985]
+NotebookDataLength[    164680,       3002]
+NotebookOptionsPosition[    164140,       2978]
+NotebookOutlinePosition[    164472,       2993]
+CellTagsIndexPosition[    164429,       2990]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,11 +44,15 @@ Cell["Interface to control robot and visualize results", "Subchapter",
 Cell[CellGroupData[{
 
 Cell[BoxData[{
- RowBox[{"controlBin", "=", 
-  RowBox[{
-  "Databin", "[", "\"\<dSFSYX3k\>\"", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"rBin", "=", "\"\<dU8AFtnw\>\""}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"controlBin", "=", 
+   RowBox[{"Databin", "[", "\"\<dSFSYX3k\>\"", "]"}]}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"rBin", "=", "\"\<dU8AFtnw\>\""}], ";"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rBin", "=", "\"\<e0WiAdJe\>\""}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"showmap", "=", "False"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{"Column", "[", 
@@ -1503,7 +1507,8 @@ kUgkCr/+D1+r5QI=
    3.676476455534357*^9}, {3.6764770623856773`*^9, 3.676477067745788*^9}, {
    3.676477749774954*^9, 3.676477786406693*^9}, {3.6764782405406723`*^9, 
    3.6764782449702597`*^9}, {3.676559952326223*^9, 3.676559963223096*^9}, {
-   3.676569448747384*^9, 3.676569458349366*^9}}],
+   3.676569448747384*^9, 3.676569458349366*^9}, {3.67689492289087*^9, 
+   3.676894930849786*^9}}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -1822,7 +1827,7 @@ lO2bLwI3TxJoja6RCNw+kO7GqSJw96CHDwDEr32g
   Selectable->False]], "Output",
  CellChangeTimes->{3.676482207105175*^9, 3.676559966416963*^9, 
   3.676569470128394*^9, 3.676757864979281*^9, 3.676766445306481*^9, 
-  3.6768149159122543`*^9, 3.676861456174777*^9}],
+  3.6768149159122543`*^9, 3.676861456174777*^9, 3.676894933336582*^9}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -2126,7 +2131,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCvj/wPj
 JDmX
          "], "Byte", ColorSpace -> "RGB", ImageSize -> {300., Automatic},
           Interleaving -> True]], StandardForm],
-      ImageSizeCache->{347., {201., 208.}}]},
+      ImageSizeCache->{300., {108., 113.}}]},
     {
      TemplateBox[{InterpretationBox[
         StyleBox[
@@ -2966,8 +2971,8 @@ kUgkCr/+D1+r5QI=
   "Column"]], "Output",
  CellChangeTimes->{3.676482207105175*^9, 3.676559966416963*^9, 
   3.676569470128394*^9, 3.676757864979281*^9, 3.676766445306481*^9, 
-  3.6768149159122543`*^9, 3.676861456216688*^9}]
-}, {3}]]
+  3.6768149159122543`*^9, 3.676861456174777*^9, 3.6768949333748083`*^9}]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
@@ -2993,10 +2998,10 @@ Cell[669, 25, 489, 10, 121, "Text"],
 Cell[CellGroupData[{
 Cell[1183, 39, 187, 2, 97, "Subchapter"],
 Cell[CellGroupData[{
-Cell[1395, 45, 82774, 1460, 2226, "Input"],
-Cell[84172, 1507, 13244, 317, 65, "Output"],
-Cell[97419, 1826, 66456, 1142, 696, "Output"]
-}, {3}]]
+Cell[1395, 45, 82953, 1465, 2246, "Input"],
+Cell[84351, 1512, 13266, 317, 65, "Output"],
+Cell[97620, 1831, 66480, 1142, 508, "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }

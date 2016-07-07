@@ -212,26 +212,26 @@ nextdir=RandomChoice[placeholder2]
 ]]
 
 
-moveRobot[where_String,motorPins_List]:=Module[{output,mpins=motorPins},
+moveRobot[where_String]:=Module[{output},
 output=\!\(\*
 TagBox[GridBox[{
 {"\[Piecewise]", GridBox[{
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Forward\>\""}]},
-{
-RowBox[{"IntegerDigits", "[", 
-RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
 RowBox[{"where", "==", "\"\<Back\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
+RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Forward\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
 RowBox[{"4", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Right\>\""}]},
+RowBox[{"where", "==", "\"\<Left\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"8", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Left\>\""}]},
+RowBox[{"where", "==", "\"\<Right\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"0", ",", "2", ",", "4"}], "]"}], 
@@ -252,7 +252,7 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{5->output[[1]],6->output[[2]],13->output[[3]],19->output[[4]]}]
+DeviceWrite["GPIO",{13->output[[1]],19->output[[2]],21->output[[3]],26->output[[4]]}]
 Print[output]
 ]
 
@@ -290,7 +290,8 @@ sensors=updateSensors[pins];
 pause=2;
 nextDirection=RandomChoice[directions];
 If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
-bin=Databin[Last[Values[controlBin]][[1]]];
+(*bin=Databin[Last[Values[controlBin]][[1]]];*)
+bin=Databin["e0WiAdJe"];
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 
 moveRobot[nextDirection,motors]

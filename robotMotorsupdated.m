@@ -222,7 +222,7 @@ RowBox[{"1", ",", "2", ",", "4"}], "]"}],
 RowBox[{"where", "==", "\"\<Back\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
-RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
 RowBox[{"where", "==", "\"\<Forward\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 

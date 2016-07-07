@@ -287,7 +287,7 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
-pause=2;
+pause=1;
 nextDirection=RandomChoice[directions];
 If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
 bin=Databin[Last[Values[controlBin]][[1]]];
@@ -329,7 +329,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 
 (* Due to upload restrictions for the Wolfram Data Drop, the If statements ensures that data is only updloaded when a change in direction or sensor readings occur *)
 (*If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]]; *)
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
+DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}]
 
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
 moveRobot[nextDirection]
@@ -363,7 +363,7 @@ mapNew=updateMap[positionNew,timestampNew,previousStatus];
 nextDirection=Last[Values[controlBin]][[3]];
 
 (*If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];*)
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
+DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}]
 Print[sensors,nextDirection,positionNew]
 moveRobot[nextDirection]
 Pause[pause]

@@ -320,7 +320,7 @@ Pause[pause];
 status={timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew};
 test=Append[test,status];
 moveRobot["Stop"]
-,{loop,50}]
+,{loop,5}]
 
 
 (* ::Section:: *)

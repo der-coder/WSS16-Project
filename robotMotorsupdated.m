@@ -265,10 +265,6 @@ Print[output]
 (*Data from the control bin*)
 
 
-controlBin=Databin["dSFSYX3k"];
-Print[Last[Values[controlBin]]] (* Ensure that we can connect to the control bin *)
-
-
 (* ::Section:: *)
 (*GPIO pin assignment*)
 
@@ -289,7 +285,7 @@ directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
 pause=1;
 nextDirection=RandomChoice[directions];
-bin=Databin[Last[Values[controlBin]][[1]]];
+bin="dU8AFtnw";
 status={};
 status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 
@@ -330,5 +326,5 @@ moveRobot["Stop"]
 
 
 status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}];
-DatabinAdd[bin,status]
+DatabinAdd["dU8AFtnw",status]
 moveRobot["Stop"]

@@ -204,8 +204,8 @@ updateDirection2[dirs_List,buttons_List,current_String]:=
 Module[{i,obstacles,placeholder,placeholder2,nextdir,placeholder3},
 obstacles=Table[1-buttons[[i]],{i,Length[buttons]}];
 placeholder3=DeleteCases[dirs,"Stop"];
-placeholder3=DeleteCases[dirs,"Forward"];
 placeholder2=DeleteCases[placeholder3*obstacles,0];
+placeholder2=DeleteCases[dirs,"Forward"]
 If[
 MemberQ[placeholder3*obstacles,current],
 nextdir=current,

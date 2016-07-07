@@ -291,7 +291,9 @@ pause=1;
 nextDirection=RandomChoice[directions];
 If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
 bin=Databin[Last[Values[controlBin]][[1]]];
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
+(*DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]*)
+status={};
+status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 
 moveRobot[nextDirection]
 
@@ -310,32 +312,28 @@ Print[sensors,nextDirection,position];
 (* Scan mode *)
 (* Add an if to check if there were any collisions? This would reduce the amount of updloads to the databin. *)
 
-If[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
+(*If[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
 While[Last[Values[controlBin]][[2]]=="Scan" && Last[Values[controlBin]][[4]]=="Execute",
-
+*)
+Do[
 sensors=updateSensors[pins];
-
 timestampNew=TimeObject[Now];
-
 previousStatus=Last[Values[bin]];
-
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
-
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
-
 mapNew=updateMap[positionNew,timestampNew,previousStatus];
-
 nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
-
 (* Due to upload restrictions for the Wolfram Data Drop, the If statements ensures that data is only updloaded when a change in direction or sensor readings occur *)
 (*If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]]; *)
-DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}]
-
+(*DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}]*)
+status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,map}];
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
-moveRobot[nextDirection]
-Pause[pause]
-]
-]
+moveRobot[nextDirection];
+Pause[pause];
+status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}];
+,{loop,10}]
+(*]
+]*)
 
 
 (* ::Section:: *)
@@ -375,5 +373,6 @@ Pause[pause]
 (*Shutdown code*)
 
 
-DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
+status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}];
+DatabinAdd[bin,status]
 moveRobot["Stop"]

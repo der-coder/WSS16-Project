@@ -287,7 +287,7 @@ map={{0,0}};
 walls={{}};
 directions={"Forward","Right","Back","Left"};
 sensors=updateSensors[pins];
-pause=2;
+pause=0.2;
 nextDirection=RandomChoice[directions];
 If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
 (*bin=Databin[Last[Values[controlBin]][[1]]];*)

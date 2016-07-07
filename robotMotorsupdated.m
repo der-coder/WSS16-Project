@@ -286,8 +286,8 @@ sensors=updateSensors[pins];
 pause=1;
 nextDirection=RandomChoice[directions];
 bin="dU8AFtnw";
-status={};
-status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
+test={};
+status={TimeObject[Now],position,nextDirection,sensors,walls,map}
 
 moveRobot[nextDirection]
 
@@ -316,7 +316,8 @@ status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
 moveRobot[nextDirection];
 Pause[pause];
-status=Append[status,{TimeObject[Now],position,nextDirection,sensors,walls,mapNew}]
+status={timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew};
+test=Append[test,status];
 moveRobot["Stop"]
 ,{loop,10}]
 

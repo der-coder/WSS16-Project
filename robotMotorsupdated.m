@@ -219,19 +219,19 @@ TagBox[GridBox[{
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"1", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Forward\>\""}]},
-{
-RowBox[{"IntegerDigits", "[", 
-RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
 RowBox[{"where", "==", "\"\<Back\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
+RowBox[{"2", ",", "2", ",", "4"}], "]"}], 
+RowBox[{"where", "==", "\"\<Forward\>\""}]},
+{
+RowBox[{"IntegerDigits", "[", 
 RowBox[{"4", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Right\>\""}]},
+RowBox[{"where", "==", "\"\<Left\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"8", ",", "2", ",", "4"}], "]"}], 
-RowBox[{"where", "==", "\"\<Left\>\""}]},
+RowBox[{"where", "==", "\"\<Right\>\""}]},
 {
 RowBox[{"IntegerDigits", "[", 
 RowBox[{"0", ",", "2", ",", "4"}], "]"}], 

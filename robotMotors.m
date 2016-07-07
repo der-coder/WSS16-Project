@@ -252,7 +252,7 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{13->output[[1]],19->output[[2]],21->output[[3]],26->output[[4]]}]
+DeviceWrite["GPIO",{13->output[[3]],19->output[[4]],21->output[[1]],26->output[[2]]}]
 Print[output]
 ]
 

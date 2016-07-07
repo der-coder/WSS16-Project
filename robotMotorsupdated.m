@@ -307,7 +307,7 @@ Print[sensors,nextDirection,position];
 Do[
 sensors=updateSensors[pins];
 timestampNew=TimeObject[Now];
-previousStatus=Last[status];
+previousStatus=status;
 positionNew=updatePosition[timestampNew,previousStatus,velocity];
 wallsNew=updateWalls2[positionNew,previousStatus,sensors];
 mapNew=updateMap[positionNew,timestampNew,previousStatus];

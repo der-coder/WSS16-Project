@@ -252,7 +252,7 @@ DeleteWithContents->True,
 Editable->False,
 SelectWithContents->True,
 Selectable->False]\);
-DeviceWrite["GPIO",{13->output[[4]],19->output[[3]],21->output[[2]],26->output[[1]]}]
+DeviceWrite["GPIO",{13->output[[1]],19->output[[2]],21->output[[3]],26->output[[4]]}]
 Print[output]
 ]
 
@@ -294,7 +294,7 @@ If[Last[Values[controlBin]][[2]]=="Control",nextDirection="Stop"];
 bin=Databin["e0WiAdJe"];
 DatabinAdd[bin,{TimeObject[Now],position,nextDirection,sensors,walls,map}]
 
-moveRobot[nextDirection,motors]
+moveRobot[nextDirection]
 
 
 (* ::Subsection:: *)
@@ -332,7 +332,7 @@ nextDirection=updateDirection2[directions,sensors,previousStatus[[3]]];
 If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]]; 
 
 Print[sensors,nextDirection,positionNew] (* Mad debug skills *)
-moveRobot[nextDirection,motors]
+moveRobot[nextDirection]
 Pause[pause]
 ]
 ]
@@ -364,7 +364,7 @@ nextDirection=Last[Values[controlBin]][[3]];
 
 If[Total[sensors]!=0||nexDirection!=Last[Values[controlBin]][[3]],DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]];
 Print[sensors,nextDirection,positionNew]
-moveRobot[nextDirection,motors]
+moveRobot[nextDirection]
 Pause[pause]
 ]
 ]
@@ -375,4 +375,4 @@ Pause[pause]
 
 
 DatabinAdd[bin,{timestampNew,positionNew,nextDirection,sensors,wallsNew,mapNew}]
-moveRobot["Stop",motors]
+moveRobot["Stop"]
